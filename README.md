@@ -10,6 +10,10 @@ This not only sparks joy in me but also makes a positive impact on my code quali
 
 Feel free to check out projects I've been working on.
 
-If you want to contact me, please go to my [LinkedIn](https://www.linkedin.com/in/mark-omarov/)
+If you want to contact me, please go to my [LinkedIn](https://www.linkedin.com/in/mark-omarov/).
+
+Also, I decided to start sharing my experience in development, it ain't much, but it's honest work, you can check it out on [Medium](https://mark-omarov.medium.com/).
+I'll try to publish new stories every two weeks on Wednesday, for starting.
+Please share your thoughts, every feedback is appreciated!
 
 Have a good time! :wave:
