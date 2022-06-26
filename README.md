@@ -23,11 +23,11 @@
 
 My name is Mark Omarov. I'm a Ukrainian residing in Japan. I got my first PC when I was about seven y.o. and since then, was fascinated and excited about the technology. After that, I had multiple attempts at self-taught programming, starting with Pascal, but failed every time until I re-prioritized my life after the events in 2014 in Donetsk, Ukraine. And now, many years later, I'm a Tech Lead, Software Architect, Software Engineer, but most importantly - a father. 🥰
 
-- Currently working with an international enterprise as a Tech Lead 👨‍💻
-- Learning Rust for fun, Kotlin for some small professional needs, and would love to check out Go 📚
-- Would like to contribute to the opensource a little bit more often 👨‍🔧
-- Interested in CyberSec and Blockchain, but yet to dive-in 🤷‍♂️
-- Ocasionally writing blog posts ✍️
+- 👨‍💻 Currently working with an international enterprise as a Tech Lead;
+- 📚 Learning Rust for fun, Kotlin for some small professional needs, and would love to check out Go;
+- 👨‍🔧 Would like to contribute to the opensource a little bit more often;
+- 🤷‍♂️ Interested in CyberSec and Blockchain, but yet to dive-in;
+- ✍️ Ocasionally writing blog posts;
 
 
 ### 🔨 Main Tehcnologies and Tools
