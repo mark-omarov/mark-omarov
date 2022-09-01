@@ -25,7 +25,7 @@ My name is Mark. I'm a Ukrainian residing in Japan. I got my first PC when I was
 
 - 👨‍💻 Currently working with an international enterprise as a Tech Lead;
 - 📚 Learning Rust for fun, and would love to check out Go;
-- 👨‍🔧 Contributing to [pnpm](https://github.com/pnpm/pnpm), and other open-source projects;
+- 👨‍🔧 Contributing to [pnpm](https://github.com/pnpm/pnpm), [defaang](https://github.com/ykdojo/defaang), and other open-source projects;
 - 🤷‍♂️ Interested in CyberSec and Blockchain, but yet to dive-in;
 - ✍️ Ocasionally writing blog posts;
 
