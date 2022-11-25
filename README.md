@@ -60,7 +60,7 @@
 ### 💁‍♂️ Something about me
 
 - 👨‍💻 I do independent consulting, contribute to open-source, consult as a Tech Lead at an international enterprise;
-- 👨‍🔧 Featured contributions: [pnpm](https://github.com/pnpm/pnpm), [defaang](https://github.com/ykdojo/defaang);
+- 👨‍🔧 Featured contributions: [pnpm](https://github.com/pnpm/pnpm), [defaang](https://github.com/ykdojo/defaang), [uapi-json](https://github.com/Travelport-Ukraine/uapi-json);
 - 📚 Learning Rust for fun, and would love to check out Go;
 - 🤷‍♂️ Besides software engineering, I'm interested in cybersecurity and computer networks;
 - ✍️ Have a few published articles;
