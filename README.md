@@ -64,3 +64,6 @@
 - 📚 Learning Rust for fun, and would love to check out Go;
 - 🤷‍♂️ Besides software engineering, I'm interested in cybersecurity and computer networks;
 - ✍️ Have a few published articles;
+
+Want to see more metrics? Check out at [Metrics Insights](https://metrics.lecoq.io/insights?user=mark-omarov)
+
