@@ -29,7 +29,6 @@ jobs:
           template: classic
           base: header, activity, community, metadata
           base_indepth: yes
-          config_display: large
           config_timezone: Asia/Tokyo
           config_order: base.header, base.activity+community, base.repositories, achievements
           plugin_achievements: yes
