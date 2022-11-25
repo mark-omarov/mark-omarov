@@ -40,23 +40,17 @@ My name is Mark. I'm a Ukrainian residing in Japan. I got my first PC when I was
   <img src="https://img.shields.io/badge/Linux-000000?style=for-the-badge&color=1C1C1E&logo=linux&logoColor=FFFFFF" alt="Linux Badge" />
 </div>
 <div>
-  <img src="https://img.shields.io/badge/Code-555555?style=for-the-badge" alt="Section with badges for code category" />
-  <img src="https://img.shields.io/badge/JS-000000?style=for-the-badge&color=1C1C1E&logo=javascript&logoColor=FFFFFF" alt="JavaScript Badge" />
-  <img src="https://img.shields.io/badge/NodeJS-000000?style=for-the-badge&color=1C1C1E&logo=node.js&logoColor=FFFFFF" alt="NodeJS Badge" />
-  <img src="https://img.shields.io/badge/React-000000?style=for-the-badge&color=1C1C1E&logo=react&logoColor=FFFFFF" alt="React Badge" />
-</div>
-<div>
   <img src="https://img.shields.io/badge/Shell-555555?style=for-the-badge" alt="Section with badges for shell category" />
   <img src="https://img.shields.io/badge/ZSH-000000?style=for-the-badge&color=1C1C1E&logo=GNUBash&logoColor=FFFFFF" alt="ZSH Badge" />
   <img src="https://img.shields.io/badge/Bash-000000?style=for-the-badge&color=1C1C1E&logo=GNUBash&logoColor=FFFFFF" alt="Bash Badge" />
 </div>  
 <div>
-  <img src="https://img.shields.io/badge/Tools-555555?style=for-the-badge" alt="Section with badges for tools category" />
-  <img src="https://img.shields.io/badge/MongoDB-000000?style=for-the-badge&color=1C1C1E&logo=MongoDB&logoColor=FFFFFF" alt="MongoDB Badge" />
-  <img src="https://img.shields.io/badge/Docker-000000?style=for-the-badge&color=1C1C1E&logo=Docker&logoColor=FFFFFF" alt="Docker Badge" />
-  <img src="https://img.shields.io/badge/Kubernetes-000000?style=for-the-badge&color=1C1C1E&logo=Kubernetes&logoColor=FFFFFF" alt="Kubernetes Badge" />
-  <img src="https://img.shields.io/badge/Git-000000?style=for-the-badge&color=1C1C1E&logo=Git&logoColor=FFFFFF" alt="Git Badge" />
-  <img src="https://img.shields.io/badge/GraphQL-000000?style=for-the-badge&color=1C1C1E&logo=GraphQL&logoColor=FFFFFF" alt="GraphQL Badge" />
+  <img src="https://img.shields.io/badge/Code-555555?style=for-the-badge" alt="Section with badges for code category" />
+  <img src="https://img.shields.io/badge/JS-000000?style=for-the-badge&color=1C1C1E&logo=javascript&logoColor=FFFFFF" alt="JavaScript Badge" />
+  <img src="https://img.shields.io/badge/TS-000000?style=for-the-badge&color=1C1C1E&logo=typescript&logoColor=FFFFFF" alt="TypeScript Badge" />
+  <img src="https://img.shields.io/badge/NodeJS-000000?style=for-the-badge&color=1C1C1E&logo=node.js&logoColor=FFFFFF" alt="NodeJS Badge" />
+  <img src="https://img.shields.io/badge/React-000000?style=for-the-badge&color=1C1C1E&logo=react&logoColor=FFFFFF" alt="React Badge" />
+  <img src="https://img.shields.io/badge/Electron-000000?style=for-the-badge&color=1C1C1E&logo=electron&logoColor=FFFFFF" alt="Electron Badge" />
 </div>
 <div>
   <img src="https://img.shields.io/badge/Cloud-555555?style=for-the-badge" alt="Section with badges for cloud category" />
@@ -66,6 +60,15 @@ My name is Mark. I'm a Ukrainian residing in Japan. I got my first PC when I was
 <div>
   <img src="https://img.shields.io/badge/DevOps-555555?style=for-the-badge" alt="Section with badges for DevOps category" />
   <img src="https://img.shields.io/badge/GitHub%20Actions-000000?style=for-the-badge&color=1C1C1E&logo=GitHub&logoColor=FFFFFF" alt="GitHub Actions Badge" />
+    <img src="https://img.shields.io/badge/GitHub%20Packages-000000?style=for-the-badge&color=1C1C1E&logo=GitHub&logoColor=FFFFFF" alt="GitHub Packages Badge" />
+  <img src="https://img.shields.io/badge/Docker-000000?style=for-the-badge&color=1C1C1E&logo=Docker&logoColor=FFFFFF" alt="Docker Badge" />
+  <img src="https://img.shields.io/badge/Kubernetes-000000?style=for-the-badge&color=1C1C1E&logo=Kubernetes&logoColor=FFFFFF" alt="Kubernetes Badge" />
+</div>
+<div>
+  <img src="https://img.shields.io/badge/Other-555555?style=for-the-badge" alt="Section with badges for other category" />
+  <img src="https://img.shields.io/badge/MongoDB-000000?style=for-the-badge&color=1C1C1E&logo=MongoDB&logoColor=FFFFFF" alt="MongoDB Badge" />
+  <img src="https://img.shields.io/badge/Git-000000?style=for-the-badge&color=1C1C1E&logo=Git&logoColor=FFFFFF" alt="Git Badge" />
+  <img src="https://img.shields.io/badge/GraphQL-000000?style=for-the-badge&color=1C1C1E&logo=GraphQL&logoColor=FFFFFF" alt="GraphQL Badge" />
 </div>
 
 ### 👀 GitHub Stats
