@@ -31,15 +31,15 @@ jobs:
           base_indepth: yes
           config_display: large
           config_timezone: Asia/Tokyo
+          config_order: base.header, base.activity+community, base.repositories, achievements
           plugin_achievements: yes
           plugin_achievements_display: compact
           plugin_achievements_threshold: B
           plugin_habits: yes
           plugin_habits_days: 30
-          plugin_notable: yes
+          # Disabling notable 'cause won't work with enterprise correctly
+          plugin_notable: no
           plugin_notable_repositories: yes
           plugin_notable_types: commit
-          plugin_reactions: yes
-          plugin_reactions_details: count
           plugin_stars: yes
           plugin_stars_limit: 3
