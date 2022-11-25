@@ -1,9 +1,5 @@
 [![@omarov's Holopin board](https://holopin.me/omarov)](https://holopin.io/@omarov)
 
-<div id="header" align="center">
-  <img src="https://s3.ap-northeast-1.amazonaws.com/public.mark.omarov.dev/profile_images/profile_circle_dark.png" width="100"/>
-</div>
-
 <div id="badges-first-row" align="center">
   <a href="https://twitter.com/mark_omarov">
     <img src="https://img.shields.io/badge/Twitter-1C1C1E?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter Badge" />
@@ -19,20 +15,10 @@
   </a>
 </div>
 
-<h1 align="center">
-  Hi 👋
-</h1>
-
-My name is Mark. I'm a Ukrainian residing in Japan. I got my first PC when I was about seven y.o. and since then, was fascinated and excited about the technology. After that, I had multiple attempts at self-taught programming, starting with Pascal, but failed every time until I re-prioritized my life after the 2014 events in Donetsk, Ukraine.
-
-- 👨‍💻 Currently working with an international enterprise as a Tech Lead;
-- 📚 Learning Rust for fun, and would love to check out Go;
-- 👨‍🔧 Contributing to [pnpm](https://github.com/pnpm/pnpm), [defaang](https://github.com/ykdojo/defaang), and other open-source projects;
-- 🤷‍♂️ Interested in CyberSec and Blockchain, but yet to dive-in;
-- ✍️ Ocasionally writing blog posts;
+[![@omarov's GitHub metrics](github-metrics.svg)](https://metrics.lecoq.io/insights/mark-omarov)
 
 
-### 🔨 Main Tehcnologies and Tools
+### 🔨 Major Tehcnologies and Tools
 
 <div>
   <img src="https://img.shields.io/badge/OS-555555?style=for-the-badge" alt="Section with badges for operational system category" />
@@ -71,7 +57,10 @@ My name is Mark. I'm a Ukrainian residing in Japan. I got my first PC when I was
   <img src="https://img.shields.io/badge/GraphQL-000000?style=for-the-badge&color=1C1C1E&logo=GraphQL&logoColor=FFFFFF" alt="GraphQL Badge" />
 </div>
 
-### 👀 GitHub Stats
+### 💁‍♂️ Something about me
 
-![](http://github-profile-summary-cards.vercel.app/api/cards/stats?username=mark-omarov&theme=github_dark)
-![](http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=mark-omarov&theme=github_dark)
+- 👨‍💻 I do independent consulting, contribute to open-source, consult as a Tech Lead at an international enterprise;
+- 👨‍🔧 Featured contributions: [pnpm](https://github.com/pnpm/pnpm), [defaang](https://github.com/ykdojo/defaang);
+- 📚 Learning Rust for fun, and would love to check out Go;
+- 🤷‍♂️ Besides software engineering, I'm interested in cybersecurity and computer networks;
+- ✍️ Have a few published articles;
