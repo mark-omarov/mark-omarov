@@ -65,5 +65,5 @@
 - 🤷‍♂️ Besides software engineering, I'm interested in cybersecurity and computer networks;
 - ✍️ Have a few published articles;
 
-Want to see more metrics? Check out at [Metrics Insights](https://metrics.lecoq.io/insights?user=mark-omarov)
+Want to see more public-only metrics? Check out at [Metrics Insights](https://metrics.lecoq.io/insights?user=mark-omarov)
 
