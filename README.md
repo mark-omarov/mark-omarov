@@ -15,7 +15,7 @@
   </a>
 </div>
 
-<img src="./github-metrics.svg" width="80%" />
+<img src="./github-metrics.svg" width="60%" />
 
 ### 🔨 Major Tehcnologies and Tools
 
