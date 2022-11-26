@@ -15,8 +15,7 @@
   </a>
 </div>
 
-[![@omarov's GitHub metrics](github-metrics.svg)](https://metrics.lecoq.io/insights/mark-omarov)
-
+<img src="./github-metrics.svg" width="100%" />
 
 ### 🔨 Major Tehcnologies and Tools
 
