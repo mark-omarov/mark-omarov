@@ -15,9 +15,9 @@
   </a>
 </div>
 
-<img src="./github-metrics.svg" width="60%" />
+<img src="./github-metrics.svg" width="60%"  alt="GitHub Metrics"/>
 
-### 🔨 Major Tehcnologies and Tools
+### 🔨 Major Technologies and Tools
 
 <div>
   <img src="https://img.shields.io/badge/OS-555555?style=for-the-badge" alt="Section with badges for operational system category" />
@@ -61,7 +61,7 @@
 - 👨‍💻 I do independent consulting, contribute to open-source, consult as a Tech Lead at an international enterprise;
 - 👨‍🔧 Featured contributions: [pnpm](https://github.com/pnpm/pnpm), [defaang](https://github.com/ykdojo/defaang), [uapi-json](https://github.com/Travelport-Ukraine/uapi-json);
 - 📚 Learning Rust for fun, and would love to check out Go;
-- 🤷‍♂️ Besides software engineering, I'm interested in cybersecurity and computer networks;
+- 🤷‍♂️ Besides software engineering, I'm interested in cyber-security and computer networks;
 - ✍️ Have a few published articles;
 
 Want to see more public-only metrics? Check out at [Metrics Insights](https://metrics.lecoq.io/insights?user=mark-omarov)
