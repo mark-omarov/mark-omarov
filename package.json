@@ -1,0 +1,19 @@
+{
+  "name": "@mark-omarov/monorepo",
+  "version": "0.0.1",
+  "description": "Special repository ✨",
+  "private": true,
+  "scripts": {
+    "preinstall": "npx only-allow pnpm"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mark-omarov/mark-omarov.git"
+  },
+  "author": "Mark Omarov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mark-omarov/mark-omarov/issues"
+  },
+  "homepage": "https://omarov.dev/"
+}
