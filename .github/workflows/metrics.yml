@@ -25,6 +25,7 @@ jobs:
           token: ${{ secrets.METRICS_TOKEN }}
 
           # Options
+          filename: .github/github-metrics.svg
           user: mark-omarov
           template: classic
           base: header, activity, community, repositories, metadata
