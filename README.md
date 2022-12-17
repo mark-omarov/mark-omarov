@@ -15,7 +15,7 @@
   </a>
 </div>
 
-<img src="./.github/github-metrics.svg" width="60%"  alt="GitHub Metrics"/>
+![Github Metrics](./.github/github-metrics.svg)
 
 ### 🔨 Major Technologies and Tools
 
