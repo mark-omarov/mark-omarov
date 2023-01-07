@@ -18,7 +18,7 @@ import {
 export default component$(() => {
   return (
     <div class="pt-10 space-y-12">
-      <div class="space-y-6">
+      <div class="space-y-6 md:flex md:justify-center md:items-center md:space-x-6">
         <div class="flex justify-center">
           <Avatar>
             <a
@@ -30,11 +30,11 @@ export default component$(() => {
           </Avatar>
         </div>
 
-        <div class="flex flex-col items-center space-y-2">
+        <div class="flex flex-col items-center space-y-2 md:items-start">
           <h1 class="text-text text-4xl font-bold uppercase">Mark Omarov</h1>
           <h2 class="text-text text-base flex">
             Founder&nbsp;
-            <Link to="https://github.com/trunklabs" external class={{ a: "b" }}>
+            <Link to="https://github.com/trunklabs" external>
               @trunklabs
             </Link>
           </h2>
@@ -46,7 +46,7 @@ export default component$(() => {
           <RepositoryIcon q:slot="icon" class="fill-text w-full h-full" />
           Open-Source Contributions
         </Title>
-        <div class="space-y-2">
+        <div class="max-md:space-y-2 md:grid md:grid-cols-2 md:gap-2">
           <ContributionCard>
             <span q:slot="title" class="flex">
               Contributor at&nbsp;
@@ -97,6 +97,7 @@ export default component$(() => {
           <FileBadgeIcon q:slot="icon" class="fill-text w-full h-full" />
           Holopin Badges
         </Title>
+        {/* TODO: Improve loading by using Resource API */}
         <div class="rounded overflow-clip border border-border aspect-[3.146622735/1]">
           <a href="https://holopin.io/@omarov" target="_blank">
             <img
@@ -108,7 +109,7 @@ export default component$(() => {
         </div>
       </div>
 
-      <div class="space-y-12">
+      <div class="max-md:space-y-12 md:grid md:grid-cols-2 md:gap-12">
         <div class="space-y-4">
           <Title>
             <BeakerIcon q:slot="icon" class="fill-text w-full h-full" />
@@ -171,16 +172,6 @@ export default component$(() => {
               SkyJump Technology
             </div>
           </div>
-          <a
-            href="mailto:reply.qml41@slmail.me"
-            class="w-full bg-secondary rounded border border-border p-2
-          flex justify-center items-center cursor-pointer hover:border-accent space-x-1 group"
-          >
-            <MailIcon class="fill-text group-hover:fill-accent h-6 w-6" />
-            <span class="text-text text-lg font-bold group-hover:text-accent">
-              Contact Me
-            </span>
-          </a>
         </div>
       </div>
     </div>
