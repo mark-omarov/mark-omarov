@@ -37,6 +37,7 @@
   <img src="https://img.shields.io/badge/React-000000?style=for-the-badge&color=1C1C1E&logo=react&logoColor=FFFFFF" alt="React Badge" />
   <img src="https://img.shields.io/badge/Electron-000000?style=for-the-badge&color=1C1C1E&logo=electron&logoColor=FFFFFF" alt="Electron Badge" />
   <img src="https://img.shields.io/badge/Deno-000000?style=for-the-badge&color=1C1C1E&logo=deno&logoColor=FFFFFF" alt="Deno Badge" />
+  <img src="https://img.shields.io/badge/Qwik-000000?style=for-the-badge&color=1C1C1E" alt="Qwik Badge" />
 </div>
 <div>
   <img src="https://img.shields.io/badge/Cloud-555555?style=for-the-badge" alt="Section with badges for cloud category" />
