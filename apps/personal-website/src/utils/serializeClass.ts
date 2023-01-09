@@ -1,5 +1,5 @@
 import { ClassList } from "~/types/jsxAttributes";
-import { isArray, isString } from "./types";
+import { isArray, isObject, isString } from "./types";
 import { Signal } from "@builder.io/qwik";
 
 export const serializeClass = (obj: ClassList | Signal<ClassList>): string => {
@@ -16,7 +16,9 @@ export const serializeClass = (obj: ClassList | Signal<ClassList>): string => {
         : result;
     }, "");
 
-  return Object.entries(obj.value ? obj.value : obj).reduce(
+  return Object.entries(
+    obj.value && isObject(obj.value) ? obj.value : obj
+  ).reduce(
     (result, [key, value]) =>
       value ? (result ? `${result} ${key.trim()}` : key.trim()) : result,
     ""
