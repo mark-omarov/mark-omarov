@@ -43,6 +43,7 @@
   <img src="https://img.shields.io/badge/Cloud-555555?style=for-the-badge" alt="Section with badges for cloud category" />
   <img src="https://img.shields.io/badge/AWS-000000?style=for-the-badge&color=1C1C1E&logo=AmazonAWS&logoColor=FFFFFF" alt="AWS Badge" />
   <img src="https://img.shields.io/badge/DigitalOcean-000000?style=for-the-badge&color=1C1C1E&logo=DigitalOcean&logoColor=FFFFFF" alt="DigitalOcean Badge" />
+  <img src="https://img.shields.io/badge/Cloudflare-000000?style=for-the-badge&color=1C1C1E&logo=Cloudflare&logoColor=FFFFFF" alt="DigitalOcean Badge" />
 </div>
 <div>
   <img src="https://img.shields.io/badge/DevOps-555555?style=for-the-badge" alt="Section with badges for DevOps category" />
