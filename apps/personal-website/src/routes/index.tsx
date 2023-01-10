@@ -24,6 +24,7 @@ export default component$(() => {
             <a
               href="mailto:reply.qml41@slmail.me"
               class="absolute rounded-full bottom-0 right-0 p-1.5"
+              aria-label="Contact me"
             >
               <IconButton icon={MailIcon} />
             </a>
