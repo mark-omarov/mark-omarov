@@ -17,15 +17,24 @@ export default component$(() => {
         <div class="md:px-4">
           <div class="max-md:p-4 md:py-4 border-border border-t flex justify-between items-center">
             <div class="flex space-x-2">
-              <a href="https://twitter.com/mark_omarov" target="_blank">
+              <a
+                href="https://twitter.com/mark_omarov"
+                target="_blank"
+                aria-label="Mark Omarov Twitter profile"
+              >
                 <IconButton icon={TwitterIcon} />
               </a>
-              <a href="https://github.com/mark-omarov" target="_blank">
+              <a
+                href="https://github.com/mark-omarov"
+                target="_blank"
+                aria-label="Mark Omarov GitHub profile"
+              >
                 <IconButton icon={GitHubIcon} />
               </a>
               <a
                 href="https://www.linkedin.com/in/mark-omarov/"
                 target="_blank"
+                aria-label="Mark Omarov LinkedIn profile"
               >
                 <IconButton icon={LinkedinIcon} />
               </a>
@@ -36,6 +45,7 @@ export default component$(() => {
                 className="w-40 bg-secondary rounded border border-border p-2
                            flex justify-center items-center cursor-pointer
                            hover:border-accent space-x-2 group"
+                aria-label="Contact me"
               >
                 <MailIcon class="fill-text group-hover:fill-accent h-6 w-6" />
                 <span className="text-text text-lg font-bold group-hover:text-accent">
