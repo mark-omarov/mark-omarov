@@ -184,7 +184,7 @@ export const head: DocumentHead = {
   meta: [
     {
       name: "description",
-      content: "Personal website of Mark Omarov, founder of Trunklabs",
+      content: "Personal website of Mark Omarov",
     },
   ],
 };
