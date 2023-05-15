@@ -7,12 +7,6 @@
   <a href="https://www.linkedin.com/in/mark-omarov">
     <img src="https://img.shields.io/badge/LinkedIn-1C1C1E?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge" />
   </a>
-  <a href="https://medium.com/@mark-omarov">
-    <img src="https://img.shields.io/badge/Medium-1C1C1E?style=for-the-badge&logo=medium&logoColor=white" alt="Medium Badge" />
-  </a>
-  <a href="https://dev.to/mark_omarov">
-    <img src="https://img.shields.io/badge/dev.to-1C1C1E?style=for-the-badge&logo=dev.to&logoColor=white" alt="DevTo Badge" />
-  </a>
 </div>
 
 ![Github Metrics](./.github/github-metrics.svg)
