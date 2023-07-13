@@ -41,7 +41,7 @@ jobs:
           # plugin_habits_days: 30
           # Disabling notable 'cause won't work with enterprise correctly
           plugin_notable: no
-          plugin_notable_repositories: yes
+          plugin_notable_repositories: no
           plugin_notable_types: commit
           plugin_stars: no
           plugin_stars_limit: 4
