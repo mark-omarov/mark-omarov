@@ -47,7 +47,7 @@
   <img src="https://img.shields.io/badge/Kubernetes-000000?style=for-the-badge&color=1C1C1E&logo=Kubernetes&logoColor=FFFFFF" alt="Kubernetes Badge" />
 </div>
 <div>
-  <img src="https://img.shields.io/badge/Other-555555?style=for-the-badge" alt="Section with badges for other category" />
+  <img src="https://img.shields.io/badge/Other-555555?style=for-the-badge" alt="Section with badges for other categories" />
   <img src="https://img.shields.io/badge/MongoDB-000000?style=for-the-badge&color=1C1C1E&logo=MongoDB&logoColor=FFFFFF" alt="MongoDB Badge" />
   <img src="https://img.shields.io/badge/Git-000000?style=for-the-badge&color=1C1C1E&logo=Git&logoColor=FFFFFF" alt="Git Badge" />
   <img src="https://img.shields.io/badge/GraphQL-000000?style=for-the-badge&color=1C1C1E&logo=GraphQL&logoColor=FFFFFF" alt="GraphQL Badge" />
@@ -55,10 +55,10 @@
 
 ### 💁‍♂️ Something about me
 
-- 👨‍💻 I do independent consulting, contribute to open-source, consult as a Tech Lead at an international enterprise;
-- 👨‍🔧 Featured contributions: [pnpm](https://github.com/pnpm/pnpm), [defaang](https://github.com/ykdojo/defaang), [uapi-json](https://github.com/Travelport-Ukraine/uapi-json);
+- 👨‍💻 I do independent consulting and contribute to open-source;
+- 👨‍🔧 Notable contributions: [pnpm](https://github.com/pnpm/pnpm), [defaang](https://github.com/ykdojo/defaang), [uapi-json](https://github.com/Travelport-Ukraine/uapi-json);
 - 📚 Trying out new technologies regularly;
-- 🤷‍♂️ Besides software engineering, I'm interested in cyber-security and computer networks;
+- 🤷‍♂️ Besides software engineering, I'm interested in cybersecurity and networks;
 - ✍️ Have a few published articles;
 
 Want to see more public-only metrics? Check out at [Metrics Insights](https://metrics.lecoq.io/insights?user=mark-omarov)
