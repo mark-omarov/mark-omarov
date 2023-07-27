@@ -34,7 +34,7 @@ jobs:
           config_order: base.header, base.activity+community, base.repositories, achievements
           #config_display: large
           # TODO: fix achievements plugin error
-          plugin_achievements: no
+          plugin_achievements: yes
           plugin_achievements_display: compact
           plugin_achievements_threshold: B
           plugin_habits: no
