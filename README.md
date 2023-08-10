@@ -42,7 +42,8 @@
 <div>
   <img src="https://img.shields.io/badge/DevOps-555555?style=for-the-badge" alt="Section with badges for DevOps category" />
   <img src="https://img.shields.io/badge/GitHub%20Actions-000000?style=for-the-badge&color=1C1C1E&logo=GitHub&logoColor=FFFFFF" alt="GitHub Actions Badge" />
-    <img src="https://img.shields.io/badge/GitHub%20Packages-000000?style=for-the-badge&color=1C1C1E&logo=GitHub&logoColor=FFFFFF" alt="GitHub Packages Badge" />
+  <img src="https://img.shields.io/badge/GitHub%20Packages-000000?style=for-the-badge&color=1C1C1E&logo=GitHub&logoColor=FFFFFF" alt="GitHub Packages Badge" />
+  <img src="https://img.shields.io/badge/Ansible-000000?style=for-the-badge&color=1C1C1E&logo=Ansible&logoColor=FFFFFF" alt="Ansible" />
   <img src="https://img.shields.io/badge/Docker-000000?style=for-the-badge&color=1C1C1E&logo=Docker&logoColor=FFFFFF" alt="Docker Badge" />
   <img src="https://img.shields.io/badge/Kubernetes-000000?style=for-the-badge&color=1C1C1E&logo=Kubernetes&logoColor=FFFFFF" alt="Kubernetes Badge" />
 </div>
