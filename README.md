@@ -57,7 +57,7 @@
 ### 💁‍♂️ Something about me
 
 - 👨‍💻 I do independent consulting and contribute to open-source;
-- 👨‍🔧 Notable contributions: [pnpm](https://github.com/pnpm/pnpm), [defaang](https://github.com/ykdojo/defaang), [uapi-json](https://github.com/Travelport-Ukraine/uapi-json);
+- 👨‍🔧 Notable contributions: [pnpm](https://github.com/pnpm/pnpm), [hyperdx](https://github.com/hyperdxio/hyperdx), [uapi-json](https://github.com/Travelport-Ukraine/uapi-json);
 - 📚 Trying out new technologies regularly;
 - 🤷‍♂️ Besides software engineering, I'm interested in cybersecurity and networks;
 - ✍️ Have a few published articles;
