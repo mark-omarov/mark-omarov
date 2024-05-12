@@ -54,13 +54,5 @@
   <img src="https://img.shields.io/badge/GraphQL-000000?style=for-the-badge&color=1C1C1E&logo=GraphQL&logoColor=FFFFFF" alt="GraphQL Badge" />
 </div>
 
-### 💁‍♂️ Something about me
-
-- 👨‍💻 I do independent consulting and contribute to open-source;
-- 👨‍🔧 Notable contributions: [pnpm](https://github.com/pnpm/pnpm), [hyperdx](https://github.com/hyperdxio/hyperdx), [uapi-json](https://github.com/Travelport-Ukraine/uapi-json);
-- 📚 Trying out new technologies regularly;
-- 🤷‍♂️ Besides software engineering, I'm interested in cybersecurity and networks;
-- ✍️ Have a few published articles;
-
-Want to see more public-only metrics? Check out at [Metrics Insights](https://metrics.lecoq.io/insights?user=mark-omarov)
+Stats do not include off GitHub private contributions. Check out more at [Metrics Insights](https://metrics.lecoq.io/insights?user=mark-omarov)
 
