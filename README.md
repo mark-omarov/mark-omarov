@@ -9,4 +9,4 @@
 ![Github Metrics](./.github/github-metrics.svg)
 
 
-Stats exclude private contributions. Check out more at [Metrics Insights](https://metrics.lecoq.io/insights?user=mark-omarov)
+Stats exclude private organizations and contributions. Check out more at [Metrics Insights](https://metrics.lecoq.io/insights?user=mark-omarov)
