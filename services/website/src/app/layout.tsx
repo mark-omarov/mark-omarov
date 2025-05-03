@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Mark Omarov | Software Engineer',
   description:
-    'Personal website of Mark Omarov, a Software Engineer based in Tokyo, Japan.',
+    'Personal website of Mark Omarov - hands‑on software engineer who ships, no drama.',
   icons: [{ rel: 'icon', url: '/favicon.ico' }],
 };
 
