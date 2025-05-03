@@ -2,5 +2,6 @@ packages:
   - services/*
   - packages/*
 onlyBuiltDependencies:
+  - core-js-pure
   - sharp
   - unrs-resolver
