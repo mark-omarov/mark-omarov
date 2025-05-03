@@ -2,6 +2,7 @@ packages:
   - services/*
   - packages/*
 onlyBuiltDependencies:
+  - '@vercel/speed-insights'
   - core-js-pure
   - sharp
   - unrs-resolver

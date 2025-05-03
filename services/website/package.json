@@ -9,11 +9,13 @@
     "lint": "next lint",
     "preview": "next build && next start",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "convert:webp": "./scripts/convert-webp.sh"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.0",
     "@t3-oss/env-nextjs": "^0.12.0",
+    "@vercel/speed-insights": "^1.2.0",
     "@workspace/ui": "workspace:*",
     "lucide-react": "^0.507.0",
     "next": "^15.2.3",
@@ -23,14 +25,14 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@types/node": "^20.14.10",
+    "@types/node": "^22.15.30",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "eslint": "^9.23.0",
     "eslint-config-next": "^15.2.3",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
-    "typescript": "^5.8.2",
+    "typescript": "^5.8.3",
     "typescript-eslint": "^8.27.0"
   },
   "ct3aMetadata": {

@@ -7,6 +7,15 @@ import './src/env.js';
 /** @type {import("next").NextConfig} */
 const config = {
   transpilePackages: ['@workspace/ui'],
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'holopin.me',
+        pathname: '**',
+      },
+    ],
+  },
 };
 
 export default config;
