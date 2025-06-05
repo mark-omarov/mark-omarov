@@ -19,7 +19,24 @@ export const metadata: Metadata = {
   title: 'Mark Omarov | Software Engineer',
   description:
     'Personal website of Mark Omarov - hands‑on software engineer who ships, no drama.',
-  icons: [{ rel: 'icon', url: '/favicon.ico' }],
+  manifest: '/site.webmanifest',
+  icons: [
+    { rel: 'icon', url: '/favicon.ico', sizes: 'any' },
+    {
+      rel: 'icon',
+      url: '/favicon-16x16.png',
+      sizes: '16x16',
+      type: 'image/png',
+    },
+    {
+      rel: 'icon',
+      url: '/favicon-32x32.png',
+      sizes: '32x32',
+      type: 'image/png',
+    },
+    { rel: 'apple-touch-icon', url: '/apple-touch-icon.png' },
+    { rel: 'mask-icon', url: '/favicon.ico' },
+  ],
 };
 
 const NAV_ITEMS: NavItem[] = [
