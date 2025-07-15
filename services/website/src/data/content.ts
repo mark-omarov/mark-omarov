@@ -173,6 +173,18 @@ const projects: Project[] = [
       },
     ],
   },
+  {
+    title: 'Build an AI Agent in Python',
+    description:
+      'Guided boot.dev project that teaches you how to build an LLM-powered command-line program capable of reading, updating, and running Python code using the Gemini API.',
+    links: [
+      {
+        text: 'Source',
+        href: 'https://github.com/mark-omarov/py-ai-agent',
+        icon: 'Github',
+      },
+    ],
+  },
 ];
 
 export const content: Content = {
