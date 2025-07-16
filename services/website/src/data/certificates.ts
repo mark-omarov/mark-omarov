@@ -1,5 +1,4 @@
 type Certificate = {
-  id: string;
   name: string;
   issuer: string;
   date: Date;
@@ -21,7 +20,6 @@ export const CATEGORIES = {
 
 const certificates: Certificate[] = [
   {
-    id: '1',
     name: 'Google Cybersecurity Professional Certificate',
     issuer: 'Google',
     date: new Date(2025, 2),
@@ -31,7 +29,6 @@ const certificates: Certificate[] = [
     image: '/certs/google/google-cybersecurity.webp',
   },
   {
-    id: '2',
     name: 'Full Stack Observability Practitioner Exam',
     issuer: 'New Relic',
     date: new Date(2023, 8),
@@ -41,7 +38,6 @@ const certificates: Certificate[] = [
     image: '/certs/newrelic/newrelic-full-stack-observability.webp',
   },
   {
-    id: '3',
     name: 'Ethical Hacking for Beginners',
     issuer: 'Udemy',
     type: 'participation',
@@ -51,7 +47,6 @@ const certificates: Certificate[] = [
     image: '/certs/udemy/ethical-hacking-for-beginners.webp',
   },
   {
-    id: '4',
     name: "Unreal Engine 5: The Complete Beginner's Course",
     issuer: 'Udemy',
     type: 'participation',
@@ -61,7 +56,6 @@ const certificates: Certificate[] = [
     image: '/certs/udemy/unreal-engine-5-the-complete-beginners-course.webp',
   },
   {
-    id: '5',
     name: 'React Native (feat. Redux)',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -71,7 +65,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/react-native-dark.webp',
   },
   {
-    id: '6',
     name: 'JavaScript: The Hard Parts, v2',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -81,7 +74,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/javascript-hard-parts-v2-dark.webp',
   },
   {
-    id: '7',
     name: 'JavaScript: From Fundamentals to Functional JS, v2',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -91,7 +83,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/js-fundamentals-functional-v2-dark.webp',
   },
   {
-    id: '8',
     name: 'Complete Intro to Web Development, v2',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -101,7 +92,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/web-development-v2-dark.webp',
   },
   {
-    id: '9',
     name: 'Getting Started with JavaScript, v2',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -111,7 +101,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/getting-started-javascript-v2-dark.webp',
   },
   {
-    id: '10',
     name: 'Introduction to Node.js, v2',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -121,7 +110,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/node-js-v2-dark.webp',
   },
   {
-    id: '11',
     name: 'The Hard Parts of Servers & Node.js',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -131,7 +119,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/servers-node-js-dark.webp',
   },
   {
-    id: '12',
     name: 'The Rust Programming Language',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -141,7 +128,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/rust-dark.webp',
   },
   {
-    id: '13',
     name: 'Deep JavaScript Foundations, v3',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -151,7 +137,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/deep-javascript-v3-dark.webp',
   },
   {
-    id: '14',
     name: 'JavaScript: The Recent Parts',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -161,7 +146,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/js-recent-parts-dark.webp',
   },
   {
-    id: '15',
     name: 'Electron Fundamentals, v2',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -171,7 +155,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/electron-v2-dark.webp',
   },
   {
-    id: '16',
     name: 'Website Accessibility, v2',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -181,7 +164,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/accessibility-v2-dark.webp',
   },
   {
-    id: '17',
     name: 'Complete Intro to React, v7',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -191,7 +173,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/complete-react-v7-dark.webp',
   },
   {
-    id: '18',
     name: 'Complete Intro to Web Development, v3',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -201,7 +182,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/web-development-v3-dark.webp',
   },
   {
-    id: '19',
     name: 'Web Performance Fundamentals',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -211,7 +191,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/web-perf-dark.webp',
   },
   {
-    id: '20',
     name: 'Course Completed: Digging Into Node.js',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -221,7 +200,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/digging-into-node-dark.webp',
   },
   {
-    id: '21',
     name: 'Full Stack for Front-End Engineers, v2',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -231,7 +209,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/fullstack-v2-dark.webp',
   },
   {
-    id: '22',
     name: 'TypeScript Fundamentals, v3',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -241,7 +218,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/typescript-v3-dark.webp',
   },
   {
-    id: '23',
     name: 'Functional JavaScript First Steps',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -251,7 +227,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/functional-first-steps-dark.webp',
   },
   {
-    id: '24',
     name: 'The Hard Parts of Asynchronous JavaScript',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -261,7 +236,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/javascript-new-hard-parts-dark.webp',
   },
   {
-    id: '25',
     name: 'JavaScript Performance',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -271,7 +245,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/web-performance-dark.webp',
   },
   {
-    id: '26',
     name: 'JavaScript: From First Steps to Professional',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -281,7 +254,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/javascript-first-steps-dark.webp',
   },
   {
-    id: '27',
     name: 'Getting Started with CSS',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -291,7 +263,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/getting-started-css-dark.webp',
   },
   {
-    id: '28',
     name: 'Functional-Light JavaScript, v3',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -301,7 +272,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/functional-javascript-v3-dark.webp',
   },
   {
-    id: '29',
     name: 'Figma for Developers',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -311,7 +281,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/figma-dark.webp',
   },
   {
-    id: '30',
     name: 'Developer Productivity',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -321,7 +290,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/developer-productivity-dark.webp',
   },
   {
-    id: '31',
     name: 'Intermediate TypeScript',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -331,7 +299,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/intermediate-typescript-dark.webp',
   },
   {
-    id: '32',
     name: 'Qwik for Instant-Loading Websites & Apps',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -341,7 +308,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/qwik-dark.webp',
   },
   {
-    id: '33',
     name: 'Complete Intro to React, v8',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -351,7 +317,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/complete-react-v8-dark.webp',
   },
   {
-    id: '34',
     name: 'Intermediate React, v5',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -361,7 +326,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/intermediate-react-v5-dark.webp',
   },
   {
-    id: '35',
     name: 'Introduction to Next.js, v2',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -371,7 +335,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/next-js-v2-dark.webp',
   },
   {
-    id: '36',
     name: 'Git In-depth',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -381,7 +344,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/git-in-depth-dark.webp',
   },
   {
-    id: '37',
     name: 'Full Stack for Front-End Engineers, v3',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -391,7 +353,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/fullstack-v3-dark.webp',
   },
   {
-    id: '38',
     name: 'Complete Intro to Containers (feat. Docker)',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -401,7 +362,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/complete-intro-containers-dark.webp',
   },
   {
-    id: '39',
     name: 'Complete Intro to Product Management',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -411,7 +371,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/product-management-dark.webp',
   },
   {
-    id: '40',
     name: 'Introducing DevOps for Developers',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -421,7 +380,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/devops-dark.webp',
   },
   {
-    id: '41',
     name: 'Basics of Go',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -431,7 +389,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/go-basics-dark.webp',
   },
   {
-    id: '42',
     name: 'HTMX & Go',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -441,7 +398,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/htmx-dark.webp',
   },
   {
-    id: '43',
     name: 'Enterprise DevOps & Cloud Infrastructure',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -451,7 +407,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/enterprise-devops-dark.webp',
   },
   {
-    id: '44',
     name: 'Complete Intro to Databases',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -461,7 +416,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/databases-dark.webp',
   },
   {
-    id: '45',
     name: 'Learn to code in Python',
     issuer: 'Boot.dev',
     type: 'participation',
@@ -471,7 +425,6 @@ const certificates: Certificate[] = [
     image: '/certs/boot-dev/bootdev_certificate-python.webp',
   },
   {
-    id: '46',
     name: 'Learn Object Oriented Programming in Python',
     issuer: 'Boot.dev',
     type: 'participation',
@@ -481,7 +434,6 @@ const certificates: Certificate[] = [
     image: '/certs/boot-dev/bootdev_certificate-python-oop.webp',
   },
   {
-    id: '47',
     name: 'Learn Shells and Terminals',
     issuer: 'Boot.dev',
     type: 'participation',
@@ -491,7 +443,6 @@ const certificates: Certificate[] = [
     image: '/certs/boot-dev/bootdev_certificate-linux.webp',
   },
   {
-    id: '48',
     name: 'Learn GO for Developers',
     issuer: 'Boot.dev',
     type: 'participation',
@@ -501,7 +452,6 @@ const certificates: Certificate[] = [
     image: '/certs/boot-dev/bootdev_certificate-go.webp',
   },
   {
-    id: '49',
     name: 'Learn Git',
     issuer: 'Boot.dev',
     type: 'participation',
@@ -511,7 +461,6 @@ const certificates: Certificate[] = [
     image: '/certs/boot-dev/bootdev_certificate-git.webp',
   },
   {
-    id: '50',
     name: 'Learn Functional Programming in Python',
     issuer: 'Boot.dev',
     type: 'participation',
@@ -521,7 +470,6 @@ const certificates: Certificate[] = [
     image: '/certs/boot-dev/bootdev_certificate-python-fp.webp',
   },
   {
-    id: '51',
     name: 'Functional JavaScript First Steps, v2',
     issuer: 'FrontendMasters',
     type: 'participation',
@@ -531,7 +479,6 @@ const certificates: Certificate[] = [
     image: '/certs/fem/functional-first-steps-v2-dark.webp',
   },
   {
-    id: '52',
     name: 'Learn Data Structures and Algorithms in Python ',
     issuer: 'Boot.dev',
     type: 'participation',

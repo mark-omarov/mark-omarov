@@ -66,7 +66,7 @@ export default async function CertificatesPage({
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {certificates.map((certificate) => (
                 <Card
-                  key={certificate.id}
+                  key={certificate.name}
                   className="flex flex-col overflow-hidden"
                 >
                   <div className="bg-muted relative aspect-video w-full overflow-hidden">
