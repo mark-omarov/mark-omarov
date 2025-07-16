@@ -537,7 +537,7 @@ const certificates: Certificate[] = [
     type: 'participation',
     date: new Date(2025, 6),
     category: CATEGORIES.tools,
-    url: 'https://static.frontendmasters.com/ud/c/e9197fff18/ILBMAduteI/functional-first-steps-v2.pdf',
+    url: 'https://www.boot.dev/certificates/67dae7c5-404d-43de-a48e-b51b36d353ff',
     image: '/certs/boot-dev/bootdev_certificate-dsa.webp',
   },
 ];
