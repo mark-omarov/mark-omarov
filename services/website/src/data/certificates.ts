@@ -530,6 +530,16 @@ const certificates: Certificate[] = [
     url: 'https://static.frontendmasters.com/ud/c/e9197fff18/ILBMAduteI/functional-first-steps-v2.pdf',
     image: '/certs/fem/functional-first-steps-v2-dark.webp',
   },
+  {
+    id: '52',
+    name: 'Learn Data Structures and Algorithms in Python ',
+    issuer: 'Boot.dev',
+    type: 'participation',
+    date: new Date(2025, 6),
+    category: CATEGORIES.tools,
+    url: 'https://static.frontendmasters.com/ud/c/e9197fff18/ILBMAduteI/functional-first-steps-v2.pdf',
+    image: '/certs/boot-dev/bootdev_certificate-dsa.webp',
+  },
 ];
 
 export function getPaginatedCertificates(
