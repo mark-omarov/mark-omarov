@@ -20,33 +20,8 @@ export default function HomePage() {
           <FloatingParticles />
         </div>
 
-        <div className="relative flex flex-col-reverse gap-8 p-8 md:grid md:grid-cols-2">
-          <div className="flex flex-col justify-center space-y-6">
-            <div className="flex items-end gap-1">
-              <Terminal className="h-8 w-8 text-green-500" />
-              <h1 className="text-4xl font-bold tracking-tight">
-                {personalInfo.name}
-              </h1>
-            </div>
-            <h2 className="text-muted-foreground text-xl font-medium">
-              {personalInfo.jobTitle}
-            </h2>
-            <p className="text-muted-foreground">
-              <span className="inline-block">{personalInfo.tagline}</span>
-            </p>
-            <p className="text-muted-foreground">{personalInfo.bio}</p>
-            <div className="flex flex-wrap gap-4">
-              {personalInfo.navButtons.map((button) => (
-                <Button key={button.text} asChild variant="outline" size="sm">
-                  <Link href={button.href}>
-                    <span>{button.text}</span>
-                  </Link>
-                </Button>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex items-center justify-center">
+        <div className="relative flex flex-col gap-8 p-8 md:flex-row">
+          <div className="flex items-center">
             <div className="relative h-56 w-56 md:h-64 md:w-64">
               <div className="absolute inset-0 animate-[pulse_6s_ease-in-out_infinite] rounded-full bg-green-500/20 blur-2xl"></div>
               <div
@@ -62,6 +37,37 @@ export default function HomePage() {
                   className="h-full w-full"
                 />
               </div>
+            </div>
+          </div>
+
+          <div className="flex flex-col justify-center space-y-6">
+            <div className="flex items-end gap-1">
+              <Terminal className="h-8 w-8 text-green-500" />
+              <h1 className="text-4xl font-bold tracking-tight">
+                {personalInfo.name}
+              </h1>
+            </div>
+            <h2 className="text-muted-foreground text-xl font-medium">
+              {personalInfo.jobTitle}
+            </h2>
+            <p className="text-muted-foreground">
+              <span className="inline-block">{personalInfo.tagline}</span>
+            </p>
+            <p className="text-muted-foreground">
+              {personalInfo.bio.map((el) => (
+                <span className="block" key={el}>
+                  {el}
+                </span>
+              ))}
+            </p>
+            <div className="flex flex-wrap gap-4">
+              {personalInfo.navButtons.map((button) => (
+                <Button key={button.text} asChild variant="outline" size="sm">
+                  <Link href={button.href}>
+                    <span>{button.text}</span>
+                  </Link>
+                </Button>
+              ))}
             </div>
           </div>
         </div>

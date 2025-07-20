@@ -29,7 +29,7 @@ export type Content = {
     jobTitle: string;
     avatarUrl: string;
     tagline: string;
-    bio: string;
+    bio: string[];
     navButtons: { text: string; href: string }[];
   };
   skills: {
@@ -193,7 +193,10 @@ export const content: Content = {
     jobTitle: 'SWE, Senior Product Engineer at Cogent Labs',
     avatarUrl: '/avatar.webp',
     tagline: 'Hands-on engineer building a better web, line by line.',
-    bio: "Off-screen it's family time, homelabbing, sending PRs and a few bucks to open source, or learning new shiny things. I like playing games and occasionally prototyping something fun in Godot/UE5.",
+    bio: [
+      "Off-screen it's family time, homelabbing, sending PRs and a few bucks to open source, or learning new shiny things.",
+      'I like playing games and occasionally prototyping something fun in Godot/UE5.',
+    ],
     navButtons: [
       { text: 'Projects', href: '/projects' },
       { text: 'Certificates', href: '/certificates' },
