@@ -482,10 +482,19 @@ const certificates: Certificate[] = [
     name: 'Learn Data Structures and Algorithms in Python ',
     issuer: 'Boot.dev',
     type: 'participation',
-    date: new Date(2025, 6),
-    category: CATEGORIES.tools,
+    date: new Date(2025, 6, 16),
+    category: CATEGORIES.languages,
     url: 'https://www.boot.dev/certificates/67dae7c5-404d-43de-a48e-b51b36d353ff',
     image: '/certs/boot-dev/bootdev_certificate-dsa.webp',
+  },
+  {
+    name: 'Learn Memory Management in C ',
+    issuer: 'Boot.dev',
+    type: 'participation',
+    date: new Date(2025, 6, 20),
+    category: CATEGORIES.languages,
+    url: 'https://www.boot.dev/certificates/64814616-97eb-4a27-afdb-00c38e32d055',
+    image: '/certs/boot-dev/bootdev_certificate-c-memory-management.webp',
   },
 ];
 

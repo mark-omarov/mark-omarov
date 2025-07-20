@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'Mark Omarov | Software Engineer',
   description:
-    'Personal website of Mark Omarov - hands‑on software engineer who ships, no drama.',
+    'Personal website of Mark Omarov - hands-on engineer building a better web, line by line.',
   manifest: '/site.webmanifest',
   icons: [
     { rel: 'icon', url: '/favicon.ico', sizes: 'any' },
