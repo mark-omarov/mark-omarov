@@ -479,7 +479,7 @@ const certificates: Certificate[] = [
     image: '/certs/fem/functional-first-steps-v2-dark.webp',
   },
   {
-    name: 'Learn Data Structures and Algorithms in Python ',
+    name: 'Learn Data Structures and Algorithms in Python',
     issuer: 'Boot.dev',
     type: 'participation',
     date: new Date(2025, 6, 16),
@@ -488,13 +488,22 @@ const certificates: Certificate[] = [
     image: '/certs/boot-dev/bootdev_certificate-dsa.webp',
   },
   {
-    name: 'Learn Memory Management in C ',
+    name: 'Learn Memory Management in C',
     issuer: 'Boot.dev',
     type: 'participation',
     date: new Date(2025, 6, 20),
     category: CATEGORIES.languages,
     url: 'https://www.boot.dev/certificates/64814616-97eb-4a27-afdb-00c38e32d055',
     image: '/certs/boot-dev/bootdev_certificate-c-memory-management.webp',
+  },
+  {
+    name: 'Learn HTTP Clients in GO',
+    issuer: 'Boot.dev',
+    type: 'participation',
+    date: new Date(2025, 6, 30),
+    category: CATEGORIES.languages,
+    url: 'https://www.boot.dev/certificates/6c1d6831-9ed0-490d-a4c4-b26f2c372cb6',
+    image: '/certs/boot-dev/bootdev_certificate-go-http-clients.webp',
   },
 ];
 

@@ -20,7 +20,7 @@ export default function HomePage() {
           <FloatingParticles />
         </div>
 
-        <div className="relative flex flex-col gap-8 p-8 md:flex-row">
+        <div className="relative flex flex-col items-center gap-8 p-8 md:flex-row">
           <div className="flex items-center">
             <div className="relative h-56 w-56 md:h-64 md:w-64">
               <div className="absolute inset-0 animate-[pulse_6s_ease-in-out_infinite] rounded-full bg-green-500/20 blur-2xl"></div>
