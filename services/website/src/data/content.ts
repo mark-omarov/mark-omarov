@@ -192,6 +192,18 @@ const projects: Project[] = [
       },
     ],
   },
+  {
+    title: 'Pokedex in Go',
+    description:
+      'Guided boot.dev project that teaches you how to Build a REPL pokedex on the command line in Go. Learn how to use JSON, make network requests, and implement caching',
+    links: [
+      {
+        text: 'Source',
+        href: 'https://github.com/mark-omarov/pokedex',
+        icon: 'Github',
+      },
+    ],
+  },
 ];
 
 export const content: Content = {

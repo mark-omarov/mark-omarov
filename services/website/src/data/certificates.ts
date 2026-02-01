@@ -514,6 +514,15 @@ const certificates: Certificate[] = [
     url: 'https://www.boot.dev/certificates/74c09d10-d847-4859-95ff-98fd8c4b2404',
     image: '/certs/boot-dev/bootdev_certificate-learn-sql.webp',
   },
+  {
+    name: 'Build a Pokedex in Go',
+    issuer: 'Boot.dev',
+    type: 'participation',
+    date: new Date(2026, 1, 1),
+    category: CATEGORIES.languages,
+    url: 'https://www.boot.dev/certificates/277fc906-2f23-487d-94f4-e073862e6b35',
+    image: '/certs/boot-dev/bootdev_certificate-pokedex.webp',
+  },
 ];
 
 export function getPaginatedCertificates(
