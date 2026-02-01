@@ -11,7 +11,6 @@ export type Project = {
   title: string;
   description: string;
   links: Link[];
-  featured?: boolean;
 };
 
 export type Job = {
@@ -72,20 +71,18 @@ const projects: Project[] = [
         icon: 'Github',
       },
     ],
-    featured: true,
   },
   {
-    title: 'Personal Website',
+    title: 'Marshant Feature Flag',
     description:
-      "My personal website built with Next.js and TailwindCSS. You're looking at it right now!",
+      'Self-hosted feature flag management platform - manage flags, rollouts, and experiments.',
     links: [
       {
         text: 'Source',
-        href: 'https://github.com/mark-omarov/mark-omarov',
+        href: 'https://github.com/trunklabs/marshant',
         icon: 'Github',
       },
     ],
-    featured: true,
   },
   {
     title: 'GH Contribution Mate',
@@ -98,7 +95,6 @@ const projects: Project[] = [
         icon: 'Github',
       },
     ],
-    featured: true,
   },
   {
     title: 'Travel Booking System',
@@ -111,7 +107,18 @@ const projects: Project[] = [
         icon: 'ExternalLink',
       },
     ],
-    featured: true,
+  },
+  {
+    title: 'Personal Website',
+    description:
+      "My personal website built with Next.js and TailwindCSS. You're looking at it right now!",
+    links: [
+      {
+        text: 'Source',
+        href: 'https://github.com/mark-omarov/mark-omarov',
+        icon: 'Github',
+      },
+    ],
   },
   {
     title: 'Product Price Aggregator',
@@ -138,7 +145,7 @@ const projects: Project[] = [
     ],
   },
   {
-    title: 'Build a Bookbot in Python',
+    title: 'Bookbot in Python',
     description:
       'Guided boot.dev project that teaches you how to build a simple CLI bookbot using Python.',
     links: [
@@ -150,7 +157,7 @@ const projects: Project[] = [
     ],
   },
   {
-    title: 'Build Asteroids using Pythong and Pygame',
+    title: 'Asteroids game using Pythong and Pygame',
     description:
       'Guided boot.dev project that teaches you how to build the classic game Asteroids using Python and Pygame.',
     links: [
@@ -162,7 +169,7 @@ const projects: Project[] = [
     ],
   },
   {
-    title: 'Build a Static Site Generator in Python',
+    title: 'Static Site Generator in Python',
     description:
       'Guided boot.dev project that teaches you how to build a static site generator similar to Jekyll, Hugo, or Gatsby in Python.',
     links: [
@@ -174,7 +181,7 @@ const projects: Project[] = [
     ],
   },
   {
-    title: 'Build an AI Agent in Python',
+    title: 'AI Agent in Python',
     description:
       'Guided boot.dev project that teaches you how to build an LLM-powered command-line program capable of reading, updating, and running Python code using the Gemini API.',
     links: [

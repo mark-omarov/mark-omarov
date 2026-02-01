@@ -505,6 +505,15 @@ const certificates: Certificate[] = [
     url: 'https://www.boot.dev/certificates/6c1d6831-9ed0-490d-a4c4-b26f2c372cb6',
     image: '/certs/boot-dev/bootdev_certificate-go-http-clients.webp',
   },
+  {
+    name: 'Learn SQL',
+    issuer: 'Boot.dev',
+    type: 'participation',
+    date: new Date(2026, 1, 1),
+    category: CATEGORIES.languages,
+    url: 'https://www.boot.dev/certificates/74c09d10-d847-4859-95ff-98fd8c4b2404',
+    image: '/certs/boot-dev/bootdev_certificate-learn-sql.webp',
+  },
 ];
 
 export function getPaginatedCertificates(
