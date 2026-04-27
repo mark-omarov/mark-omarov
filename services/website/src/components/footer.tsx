@@ -29,7 +29,7 @@ export function Footer() {
               <span className="sr-only">LinkedIn</span>
             </div>
           </Link>
-          <Link href="mailto:contact@omarov.dev">
+          <Link href="mailto:mark@omarov.dev">
             <div className="text-muted-foreground hover:bg-accent hover:text-foreground rounded-md p-2 transition-colors">
               <Mail className="h-5 w-5" />
               <span className="sr-only">Email</span>

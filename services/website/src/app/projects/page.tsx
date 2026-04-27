@@ -1,5 +1,13 @@
+import type { Metadata } from 'next';
 import { content } from '~/data/content';
 import { Project } from '~/components/project';
+
+export const metadata: Metadata = {
+  title: 'Projects',
+  description:
+    'Open-source developer tools, infrastructure work, and shipped product. Marshant, gh-contribution-mate, uapi-json, personal homelab.',
+  alternates: { canonical: '/projects' },
+};
 
 export default function ProjectsPage() {
   const { projects } = content;

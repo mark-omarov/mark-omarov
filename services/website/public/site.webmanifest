@@ -1,6 +1,12 @@
 {
-  "name": "Mark Omarov | Software Engineer",
+  "name": "Mark Omarov - Senior Product Engineer",
   "short_name": "Mark Omarov",
+  "description": "Senior product engineer in Tokyo. TypeScript, React, Next.js, Node, Postgres, AWS, Kubernetes.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -12,8 +18,5 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ],
-  "theme_color": "#ffffff",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  ]
 }

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ExternalLink } from 'lucide-react';
@@ -11,6 +12,13 @@ import {
 import { FilterTabs } from '~/components/filter-tabs';
 import { getPaginatedCertificates, CATEGORIES } from '~/data/certificates';
 import { PaginationControls } from '~/components/pagination-controls';
+
+export const metadata: Metadata = {
+  title: 'Certificates',
+  description:
+    'Certificates and badges earned across frontend, backend, infrastructure, security, and language deep-dives.',
+  alternates: { canonical: '/certificates' },
+};
 
 export default async function CertificatesPage({
   searchParams: searchParamsPromise,
