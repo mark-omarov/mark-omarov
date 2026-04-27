@@ -1,17 +1,58 @@
-export type Icon = 'Github' | 'Linkedin' | 'Mail' | 'ExternalLink';
+export const CAREER_START_YEAR = 2016;
+export const TOKYO_START_YEAR = 2018;
 
-export type Link = {
-  text: string;
-  href: string;
-  icon?: Icon;
-  variant?: string;
-};
+const currentYear = new Date().getFullYear();
+const yearsShipping = currentYear - CAREER_START_YEAR;
+const yearsTokyo = currentYear - TOKYO_START_YEAR;
 
-export type Project = {
-  title: string;
-  description: string;
-  links: Link[];
-};
+export const PERSONAL = {
+  name: 'Mark Omarov',
+  handle: 'mark-omarov',
+  role: 'Senior Product Engineer',
+  company: 'Cogent Labs',
+  location: 'Tokyo',
+  timezone: 'Asia/Tokyo',
+  email: 'mark@omarov.dev',
+  github: 'https://github.com/mark-omarov',
+  linkedin: 'https://linkedin.com/in/mark-omarov',
+  yearsShipping,
+  yearsTokyo,
+  status: 'Open to Senior IC and Tech Lead roles',
+  availability: 'Tokyo onsite/hybrid or global remote',
+  languages: ['English', 'Ukrainian', 'Russian', 'Japanese (learning)'],
+} as const;
+
+export const STACK = [
+  'TypeScript',
+  'React',
+  'Next.js',
+  'Node.js',
+  'NestJS',
+  'PostgreSQL',
+  'AWS',
+  'Kubernetes',
+  'IaC',
+  'Python',
+  'Go',
+] as const;
+
+export const THESIS = {
+  l1: 'Senior Product Engineer.',
+  l2: 'End to end.',
+  caption: `Senior product engineer with ${yearsShipping} years shipping web products end to end. Currently shipping production AI features at Cogent Labs in Tokyo. Strong track record of greenfield delivery, platform refactors, and zero-downtime migrations.`,
+  approach: 'I treat LLMs as engineering components, not magic.',
+} as const;
+
+export type Signal = { k: string; v: string };
+
+export const SIGNALS: Signal[] = [
+  { k: 'Tokyo', v: `${yearsTokyo} yrs` },
+  { k: 'Shipping', v: `${yearsShipping} yrs` },
+  { k: 'Current', v: 'Cogent Labs' },
+  { k: 'Open to', v: 'Senior IC / TL' },
+];
+
+export type Win = { tag: string; label: string; detail: string };
 
 export type Job = {
   title: string;
@@ -19,212 +60,283 @@ export type Job = {
   dates: string;
   location: string;
   isCurrent?: boolean;
-  details: string[];
+  summary: string;
+  wins: Win[];
+  compact?: boolean;
 };
 
-export type Content = {
-  personalInfo: {
-    name: string;
-    jobTitle: string;
-    avatarUrl: string;
-    tagline: string;
-    bio: string[];
-    navButtons: { text: string; href: string }[];
-  };
-  skills: {
-    title: string;
-    badges: string[];
-  };
-  experience: {
-    title: string;
-    viewMoreLinkText: string;
-    viewMoreLinkUrl: string;
-    jobs: Job[];
-  };
-  featured: {
-    title: string;
-    viewAllLinkText: string;
-    viewAllLinkUrl: string;
-    projects: Project[];
-  };
-  projects: {
-    title: string;
-    description: string;
-    items: Project[];
-  };
-  contact: {
-    title: string;
-    intro: string;
-    links: Link[];
-  };
-};
-
-const projects: Project[] = [
+export const EXPERIENCE: Job[] = [
   {
-    title: 'Marshant: open-source feature flag platform',
-    description:
-      'Self-hosted feature flag platform: flags, gradual rollouts, experiments. Built with TypeScript and Next.js, designed for multi-tenancy and an open-core model.',
-    links: [
+    title: 'Senior Product Engineer',
+    company: 'Cogent Labs',
+    dates: 'Mar 2025 – Present',
+    location: 'Tokyo',
+    isCurrent: true,
+    summary:
+      'End-to-end across new AI product lines, platform refactors, design system, and DX. Cross-functional with ML, product, design, and CTO.',
+    wins: [
       {
-        text: 'Source',
-        href: 'https://github.com/trunklabs/marshant',
-        icon: 'Github',
+        tag: 'Lead',
+        label: 'New AI product line',
+        detail:
+          'Natural language instructions executed across user documents. Authored RFC, partnered with CTO and designer on UX, integrated with ML team models. Own UI, backend, and demo.',
+      },
+      {
+        tag: 'Built',
+        label: 'Document enhancement and serialization service',
+        detail:
+          'NestJS, Kafka, S3, Postgres. Prepares documents for ML consumption, powers RAG and search pipelines.',
+      },
+      {
+        tag: 'Shipped',
+        label: 'Omakase Box, zero to production',
+        detail:
+          'Greenfield product line: ordering flow, magic-link auth, sudo panel, IAM, JP localization, HubSpot. Mentored a junior engineer through delivery.',
+      },
+      {
+        tag: 'Solo',
+        label: 'SmartRead / SmartRead Classic backend split',
+        detail:
+          'Reduced regression risk, narrowed QA scope per change, unblocked focused iteration. Highlighted internally as a major win.',
+      },
+      {
+        tag: 'Built',
+        label: 'Internal feature flag UI',
+        detail:
+          'Layered UI on top of an existing API-only system. Gave product direct ownership over rollouts without engineering in the loop.',
       },
     ],
   },
   {
-    title: 'gh-contribution-mate',
-    description:
-      'GitHub CLI extension that syncs commits from local or non-GitHub repos to a GitHub profile without exposing source or commit messages. Built with TypeScript and Deno.',
-    links: [
+    title: 'Technical Lead',
+    company: 'Asurion',
+    dates: 'Jul 2022 – Mar 2025',
+    location: 'Tokyo',
+    summary:
+      'Tech Lead on a remote device farm: powered an internal call center, served external clients, and provided a real-device test surface for other internal teams.',
+    wins: [
       {
-        text: 'Source',
-        href: 'https://github.com/trunklabs/gh-contribution-mate',
-        icon: 'Github',
+        tag: 'Migrated',
+        label: 'RethinkDB to PostgreSQL, zero downtime',
+        detail:
+          'Multi-stage dual read-write strategy. Gradually rolled traffic to Postgres, sunsetted RethinkDB once parity confirmed.',
+      },
+      {
+        tag: 'Decoupled',
+        label: 'Tightly-integrated services',
+        detail:
+          'Independently-deployable components. Reduced blast radius on a system where downtime directly impacts call center operations.',
+      },
+      {
+        tag: 'Cut',
+        label: 'CI/CD build times, several times over',
+        detail:
+          'Streamed on-prem app logs to OpenSearch via Fluentd. Engineers query across services in one place instead of SSH-and-grep.',
+      },
+      {
+        tag: 'Mentored',
+        label: '2 engineers, owned technical direction',
+        detail:
+          'Roadmap planning, architectural reviews, hiring input. Contributed to early company-wide IaC standards across 3-5 teams.',
       },
     ],
   },
   {
-    title: 'uapi-json: Travelport Universal API client',
-    description:
-      'Open-source Node.js client for Travelport Universal API. Wraps booking, exchange, refund, and ticket retrieval across major GDS systems. 77 stars on GitHub.',
-    links: [
+    title: 'Senior Software Engineer',
+    company: 'Asurion',
+    dates: 'Nov 2021 – Jul 2022',
+    location: 'Tokyo',
+    summary:
+      'Joined as independent consultant. Stabilization plan with engineering management, then led a project transformation. Promoted to Tech Lead.',
+    wins: [
       {
-        text: 'Source',
-        href: 'https://github.com/Travelport-Ukraine/uapi-json',
-        icon: 'Github',
+        tag: 'Cut',
+        label: 'Deploy time by 70%+',
+        detail:
+          'Ansible-driven on-prem server config and IaC pipelines, replacing manual processes.',
+      },
+      {
+        tag: 'Migrated',
+        label: 'Codebase to monorepo',
+        detail:
+          'Overhauled developer experience. Faster local feedback loops, standardized tooling.',
+      },
+      {
+        tag: 'Hardened',
+        label: 'System security',
+        detail:
+          'Introduced secure development practices with the security team. Resolved deep-rooted issues that had blocked the team.',
       },
     ],
   },
   {
-    title: 'Personal homelab: production-grade self-hosted infrastructure',
-    description:
-      'Single-node Proxmox host running k3s with GPU passthrough. Three-stage provisioning (Pulumi, Ansible, ArgoCD), GitOps via Renovate, two-tier backup (Velero/Kopia plus Restic to S3), full Prometheus/Loki/Grafana observability, Authentik SSO, Cloudflare Tunnel for external access. Built as a sandbox for production patterns I want hands-on with outside the day job. Stack: Proxmox, k3s, Pulumi, Ansible, ArgoCD, Traefik, Helm, Velero, Restic, Prometheus, Loki, Grafana, Authentik.',
-    links: [],
+    title: 'Technical Interviewer',
+    company: 'SpaceBus',
+    dates: 'Sep 2021 – Jan 2023',
+    location: 'Remote · Concurrent',
+    summary:
+      'Contract: senior-engineer hiring interviews. Structured technical evaluation and feedback to candidates and hiring teams. Concurrent with Asurion.',
+    wins: [],
+    compact: true,
+  },
+  {
+    title: 'Senior Software Engineer',
+    company: 'Travelport',
+    dates: 'Nov 2018 – Nov 2021',
+    location: 'Remote',
+    summary:
+      'Core engineer on TCP, a booking-automation platform for EU travel agents. Production launch 2021, all EU-based agencies enrolled.',
+    wins: [
+      {
+        tag: 'Designed',
+        label: 'Microservices on AWS Lambda',
+        detail:
+          'Serverless, Node.js, DynamoDB, S3, SNS, SQS. React frontend. Zero-downtime CI/CD.',
+      },
+      {
+        tag: 'Established',
+        label: 'Team testing framework',
+        detail:
+          'Unit, integration, contract tests across the service boundary.',
+      },
+      {
+        tag: 'Hardened',
+        label: 'Authentication and session security',
+        detail:
+          'Redesigned token management to protect agent sessions and reduce credential exposure risk.',
+      },
+    ],
+  },
+  {
+    title: 'Full Stack Engineer',
+    company: 'BEENOS',
+    dates: 'May 2018 – Nov 2018',
+    location: 'Tokyo',
+    summary:
+      'Customer-facing product-price aggregation service ranking deals from multiple marketplaces by availability and price.',
+    wins: [
+      {
+        tag: 'Automated',
+        label: 'Multi-source data collection',
+        detail:
+          'Marketplace APIs and scraping pipelines feeding the aggregation service. Preact (SSR), Node/Express, DynamoDB, S3.',
+      },
+      {
+        tag: 'Delivered',
+        label: 'Internal Preact CMS',
+        detail:
+          'Built tooling for content operations. Redesigned parts of the application architecture to increase feature delivery speed.',
+      },
+    ],
+  },
+  {
+    title: 'Frontend Developer',
+    company: 'Earlier roles',
+    dates: 'Nov 2016 – Apr 2018',
+    location: 'Malta · Remote',
+    summary:
+      'Betting Entertainment LTD (Malta, on-site, 1yr+): maintained and customized a white-label betting product across ~35 client sites. Cut new-theme creation time by 50% via parametrized SASS architecture; shipped 20+ themes. SkyJump Technology (3-month freelance): SEO-friendly multi-step landing page with automated address lookup for a US solar energy company.',
+    wins: [],
   },
 ];
 
-export const content: Content = {
-  personalInfo: {
-    name: 'Mark Omarov',
-    jobTitle: 'Senior Product Engineer at Cogent Labs',
-    avatarUrl: '/avatar.webp',
-    tagline:
-      "Ship product end-to-end, including the parts most engineers won't touch.",
-    bio: [
-      '10 years shipping web products end-to-end. Tokyo for the last 8.',
-      'Day-to-day is TypeScript, React, Next.js, Node, NestJS, Postgres. Comfortable in the parts of the stack many product engineers avoid: CI/CD, Infrastructure as Code, observability, AWS, container orchestration.',
-      'At Cogent Labs I lead technical implementation of a new AI product line: natural language instructions executed across user documents. I treat LLMs as engineering components, not magic.',
-      'Outside day jobs I maintain open-source developer tools and run a homelab. That work feeds back into the day job: faster prototyping, sharper opinions on DX, less hesitation around touching infra.',
-    ],
-    navButtons: [
-      { text: 'Projects', href: '/projects' },
-      { text: 'Certificates', href: '/certificates' },
-      { text: 'Contact', href: '#contact' },
-    ],
-  },
-  skills: {
-    title: 'Skills',
-    badges: [
-      'TypeScript',
-      'React',
-      'Next.js',
-      'Node.js',
-      'NestJS',
-      'PostgreSQL',
-      'AWS',
-      'Kubernetes',
-      'Infrastructure as Code',
-      'Python',
-      'Go',
-    ],
-  },
-  experience: {
-    title: 'Experience',
-    viewMoreLinkText: 'View full experience →',
-    viewMoreLinkUrl: 'https://linkedin.com/in/mark-omarov',
-    jobs: [
-      {
-        title: 'Senior Product Engineer',
-        company: 'Cogent Labs',
-        dates: 'Mar 2025 - Present',
-        location: 'Tokyo',
-        isCurrent: true,
-        details: [
-          "Technical lead for a new AI product line: natural language instructions executed across user documents. Authored the RFC, partnered with the CTO and designer on UX, integrated with the ML team's models, own UI, backend, and demo end-to-end.",
-          'Designed and built a document enhancement and serialization service (NestJS, Kafka, S3, Postgres) that prepares documents for ML consumption and powers RAG and search.',
-          'Shipped Omakase Box, a greenfield product line, zero to production: ordering flow, magic-link auth, sudo panel, IAM, JP localization, HubSpot integration. Mentored a junior engineer through delivery.',
-          'Led the frontend migration to shadcn/ui and Tailwind, deprecating styled-components. Driving migration of the main repo to a Turborepo + pnpm + changesets monorepo with automated build and release.',
-        ],
-      },
-      {
-        title: 'Technical Lead',
-        company: 'Asurion',
-        dates: 'Jul 2022 - Mar 2025',
-        location: 'Tokyo',
-        details: [
-          "Led RethinkDB to PostgreSQL migration with zero downtime and zero user-visible impact. Multi-stage dual read-write strategy. Smoothest database migration I've shipped.",
-          'Decoupled tightly-integrated services into independently-deployable components, reducing deployment blast radius on a system where downtime directly impacts call center operations.',
-          'Reorganized CI/CD pipelines and cut build times several times over. Streamed on-prem application logs to OpenSearch via Fluentd, replacing SSH-and-grep workflows.',
-          'Contributed to early company-wide Infrastructure as Code standards across 3-5 teams. Mentored 2 engineers; owned technical direction alongside engineering management and product.',
-        ],
-      },
-      {
-        title: 'Senior Software Engineer',
-        company: 'Asurion',
-        dates: 'Nov 2021 - Jul 2022',
-        location: 'Tokyo',
-        details: [
-          'Joined as independent consultant. Aligned with engineering management on a stabilization plan, then led a project transformation: modernized stack, reduced maintenance load, increased ship velocity.',
-          'Cut deployment time by 70%+ by replacing manual processes with Ansible-driven on-prem server config and Infrastructure as Code pipelines.',
-          'Migrated the codebase to a monorepo and overhauled developer experience. Hardened system security with the security team. Promoted to Tech Lead at the end of this period.',
-        ],
-      },
-      {
-        title: 'Senior Software Engineer',
-        company: 'Travelport',
-        dates: 'Nov 2018 - Nov 2021',
-        location: 'Remote',
-        details: [
-          'Core engineer on the team that shipped TCP, a booking-automation platform for EU travel agents. Production launch in 2021, all EU-based agencies enrolled.',
-          'Designed microservices on AWS Lambda (Serverless framework, Node.js) backed by DynamoDB, S3, SNS, SQS, integrated with a React frontend. Achieved zero-downtime deploys via CI/CD pipelines.',
-          'Established the team testing framework (unit, integration, contract). Hardened authentication with redesigned token management. Drove highest client satisfaction within the team.',
-        ],
-      },
-    ],
-  },
-  featured: {
-    title: 'Featured',
-    viewAllLinkText: 'View all projects →',
-    viewAllLinkUrl: '/projects',
-    projects: projects.slice(0, 4),
-  },
-  projects: {
-    title: 'Projects',
-    description:
-      'Open-source developer tools, infrastructure work, and shipped product. The list is intentionally short: recent, public, and worth talking about.',
-    items: projects,
-  },
-  contact: {
-    title: 'Contact',
-    intro:
-      'Open to senior IC and tech lead roles. Tokyo onsite/hybrid or global remote. Reach me below.',
-    links: [
-      {
-        text: 'GitHub',
-        href: 'https://github.com/mark-omarov',
-        icon: 'Github',
-      },
-      {
-        text: 'LinkedIn',
-        href: 'https://www.linkedin.com/in/mark-omarov/',
-        icon: 'Linkedin',
-      },
-      {
-        text: 'mark@omarov.dev',
-        href: 'mailto:mark@omarov.dev',
-        icon: 'Mail',
-      },
-    ],
-  },
+export type Project = {
+  id: string;
+  year: string;
+  title: string;
+  role: string;
+  summary: string;
+  longSummary?: string;
+  stack: string[];
+  status: string;
+  href: string | null;
+  feature?: boolean;
+  tag: string;
 };
+
+export const PROJECTS: Project[] = [
+  {
+    id: '01',
+    year: '2025',
+    title: 'Personal homelab',
+    role: 'Architect / Operator',
+    summary:
+      'Production-grade self-hosted infrastructure. Single-node Proxmox host running k3s with GPU passthrough. Three-stage provisioning, GitOps, two-tier backup, full observability stack.',
+    longSummary:
+      'Built as a sandbox for production patterns I want hands-on with outside the day job. Pulumi provisions the host, Ansible configures the OS layer, ArgoCD owns the cluster state. Renovate handles GitOps updates. Velero plus Kopia run scheduled cluster backups; Restic ships off-site to S3. Prometheus, Loki, and Grafana cover metrics, logs, and dashboards. Authentik handles SSO. Cloudflare Tunnel exposes selected services without opening ports.',
+    stack: [
+      'PROXMOX',
+      'K3S',
+      'PULUMI',
+      'ANSIBLE',
+      'ARGOCD',
+      'TRAEFIK',
+      'HELM',
+      'VELERO',
+      'RESTIC',
+      'PROMETHEUS',
+      'LOKI',
+      'GRAFANA',
+      'AUTHENTIK',
+    ],
+    status: 'Operating',
+    href: null,
+    feature: true,
+    tag: 'Infrastructure',
+  },
+  {
+    id: '02',
+    year: '2024',
+    title: 'Marshant',
+    role: 'Creator',
+    summary:
+      'Open-source feature flag platform. Self-hosted: flags, gradual rollouts, experiments. TypeScript and Next.js, designed for multi-tenancy and an open-core model.',
+    stack: ['TS', 'NEXT', 'POSTGRES', 'DOCKER'],
+    status: 'Active',
+    href: 'https://github.com/trunklabs/marshant',
+    tag: 'OSS · Platform',
+  },
+  {
+    id: '03',
+    year: '2023',
+    title: 'gh-contribution-mate',
+    role: 'Author',
+    summary:
+      'GitHub CLI extension that syncs commits from local or non-GitHub repos to a GitHub profile, without exposing source or commit messages. TypeScript and Deno.',
+    stack: ['TS', 'DENO', 'CLI'],
+    status: 'Released',
+    href: 'https://github.com/trunklabs/gh-contribution-mate',
+    tag: 'OSS · Tooling',
+  },
+  {
+    id: '04',
+    year: '2019',
+    title: 'uapi-json',
+    role: 'Maintainer',
+    summary:
+      'Open-source Node.js client for Travelport Universal API. Wraps booking, exchange, refund, and ticket retrieval across major GDS systems. 77 stars on GitHub.',
+    stack: ['NODE', 'JS'],
+    status: 'Maintained',
+    href: 'https://github.com/Travelport-Ukraine/uapi-json',
+    tag: 'OSS · Library',
+  },
+];
+
+export const COMPANIES = [
+  'Cogent Labs',
+  'Asurion',
+  'SpaceBus',
+  'Travelport',
+  'BEENOS',
+  'SkyJump Technology',
+  'Betting Entertainment',
+] as const;
+
+export const HOMELAB_LAYERS: { label: string; items: string[] }[] = [
+  { label: 'Hypervisor / Host', items: ['PROXMOX'] },
+  { label: 'Cluster', items: ['K3S', 'TRAEFIK', 'HELM'] },
+  { label: 'Provisioning', items: ['PULUMI', 'ANSIBLE', 'ARGOCD'] },
+  { label: 'Observability', items: ['PROMETHEUS', 'LOKI', 'GRAFANA'] },
+  { label: 'Backup', items: ['VELERO', 'RESTIC'] },
+  { label: 'Identity / Edge', items: ['AUTHENTIK', 'CLOUDFLARE'] },
+];

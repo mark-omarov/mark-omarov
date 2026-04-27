@@ -2,6 +2,7 @@
   "name": "root",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "format:check": "prettier --check . --cache",

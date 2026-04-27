@@ -1,142 +1,75 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
-import { Badge } from '@workspace/ui/components/ui/badge';
-import { Button } from '@workspace/ui/components/ui/button';
-import {
-  Card,
-  CardContent,
-  CardFooter,
-} from '@workspace/ui/components/ui/card';
-import { FilterTabs } from '~/components/filter-tabs';
-import { getPaginatedCertificates, CATEGORIES } from '~/data/certificates';
-import { PaginationControls } from '~/components/pagination-controls';
+import { Sigil } from '~/components/primitives-server';
+import { RevealObserver } from '~/components/primitives-client';
+import { CertificatesInteractive } from '~/components/certificates-view';
+import { ALL_CERTS, HEADLINE_CERTS } from '~/data/certificates';
 
 export const metadata: Metadata = {
-  title: 'Certificates',
+  title: 'Credentials',
   description:
-    'Certificates and badges earned across frontend, backend, infrastructure, security, and language deep-dives.',
+    'Headline credentials and a categorized ledger of certificates earned across frontend, backend, infrastructure, security, and language deep-dives.',
   alternates: { canonical: '/certificates' },
 };
 
-export default async function CertificatesPage({
-  searchParams: searchParamsPromise,
-}: {
-  searchParams: Promise<{ filter?: string; page?: string }>;
-}) {
-  const searchParams = await searchParamsPromise;
-  const filter = searchParams.filter ?? 'all';
-  const page = parseInt(searchParams.page ?? '1', 10);
-  const pageSize = 3 * 5;
-
-  const { certificates, pagination } = getPaginatedCertificates(
-    page,
-    pageSize,
-    filter
-  );
+export default function CertificatesPage() {
+  const headlineCount = HEADLINE_CERTS.length;
+  const shelfCount = ALL_CERTS.length - headlineCount;
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="mb-8">
-        <h1 className="mb-2 text-3xl font-bold">Certificates</h1>
-        <p className="text-muted-foreground">
-          A collection of certificates and badges I&#39;ve earned throughout my
-          career, including exam-based and participation certificates.
-        </p>
-      </div>
+    <>
+      <RevealObserver />
 
-      <div className="relative mb-8 rounded-lg border">
-        <div className="relative" style={{ aspectRatio: '2428/764' }}>
-          <Image
-            src="https://holopin.me/omarov"
-            alt="Holopin badge board for @omarov"
-            className="rounded-lg"
-            fill
-            sizes="100vw"
-            priority={true}
-          />
-        </div>
-      </div>
-
-      <div className="mb-8">
-        <FilterTabs
-          categories={['all'].concat(Object.values(CATEGORIES))}
-          activeFilter={filter}
-        />
-
-        {certificates.length === 0 ? (
-          <div className="flex h-40 items-center justify-center rounded-lg border border-dashed">
-            <p className="text-muted-foreground">No certificates found</p>
-          </div>
-        ) : (
-          <>
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {certificates.map((certificate) => (
-                <Card
-                  key={certificate.name}
-                  className="flex flex-col overflow-hidden"
-                >
-                  <div className="bg-muted relative aspect-video w-full overflow-hidden">
-                    <Image
-                      src={certificate.image || '/placeholder.svg'}
-                      alt={certificate.name}
-                      className="object-contain"
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33.33vw"
-                    />
-                  </div>
-                  <CardContent className="flex flex-1 flex-col p-6">
-                    <div className="mb-2 flex items-center justify-between">
-                      <Badge
-                        variant={
-                          certificate.type === 'test' ? 'default' : 'outline'
-                        }
-                      >
-                        {certificate.type === 'test'
-                          ? 'Certification'
-                          : 'Participation'}
-                      </Badge>
-                      <span className="text-muted-foreground text-sm">
-                        {certificate.date.toLocaleDateString(undefined, {
-                          month: 'short',
-                          year: 'numeric',
-                        })}
-                      </span>
-                    </div>
-                    <h3 className="mb-1 text-lg font-semibold">
-                      {certificate.name}
-                    </h3>
-                    <p className="text-muted-foreground text-sm">
-                      Issued by {certificate.issuer}
-                    </p>
-                  </CardContent>
-                  {certificate.url && (
-                    <CardFooter className="mt-auto border-t p-4">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        className="w-full"
-                        asChild
-                      >
-                        <Link href={certificate.url} target="_blank">
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          View Certificate
-                        </Link>
-                      </Button>
-                    </CardFooter>
-                  )}
-                </Card>
-              ))}
+      <section className="pb-16 pt-16">
+        <div className="grid-container">
+          <div className="grid grid-cols-12 items-end gap-6 max-md:grid-cols-1 max-md:gap-4">
+            <div className="col-span-8 max-md:col-span-1">
+              <Sigil>CREDENTIALS / Index</Sigil>
+              <h1 className="font-display text-bone m-0 mt-[18px] text-[clamp(56px,7vw,104px)] font-medium leading-[0.96] tracking-[-0.03em]">
+                Three that count.
+                <br />
+                <span className="text-graphite">
+                  {shelfCount} on the shelf.
+                </span>
+              </h1>
             </div>
+            <div className="col-span-4 max-md:col-span-1">
+              <p className="text-graphite m-0 max-w-[36ch] text-sm leading-[1.55]">
+                Headline credentials first. Everything else is filed by
+                category, default-collapsed, browsable on demand. Click any row
+                to open the credential.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <PaginationControls
-              totalPages={pagination.totalPages}
-              currentPage={pagination.currentPage}
-            />
-          </>
-        )}
-      </div>
-    </div>
+      <CertificatesInteractive />
+
+      <section data-reveal="true" className="pb-24">
+        <div className="grid-container">
+          <div className="border-rule grid grid-cols-12 items-center gap-6 border-t pt-12 max-md:grid-cols-1 max-md:gap-5">
+            <div className="col-span-4 max-md:col-span-1">
+              <Sigil>Holopin Board</Sigil>
+              <p className="text-graphite mt-3 max-w-[34ch] text-sm leading-[1.55]">
+                Open-source contribution badges. Decorative, kept for
+                completeness.
+              </p>
+            </div>
+            <div className="col-span-8 max-md:col-span-1">
+              <div className="border-rule bg-paper relative aspect-[2428/764] w-full border">
+                <Image
+                  src="https://holopin.me/omarov"
+                  alt="Holopin badge board for @omarov"
+                  fill
+                  sizes="100vw"
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

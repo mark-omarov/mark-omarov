@@ -1,32 +1,47 @@
-import '@workspace/ui/globals.css';
 import './globals.css';
 
 import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { JetBrains_Mono } from 'next/font/google';
+import { Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
-import { cn } from '@workspace/ui/lib/utils';
-import { Nav, type NavItem } from '~/components/nav';
-import { Footer } from '~/components/footer';
+import { SiteHeader } from '~/components/site-header';
+import { SiteFooter } from '~/components/site-footer';
+import { HashScroller } from '~/components/hash-scroller';
+import { PERSONAL } from '~/data/content';
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-inter',
+  display: 'swap',
+});
+
+const interTight = Inter_Tight({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-inter-tight',
+  display: 'swap',
+});
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
+  weight: ['400', '500'],
   variable: '--font-jetbrains-mono',
+  display: 'swap',
 });
 
 const SITE_URL = 'https://omarov.dev';
 const SITE_NAME = 'Mark Omarov';
-const DEFAULT_TITLE = 'Mark Omarov - Senior Product Engineer';
-const DEFAULT_DESCRIPTION =
-  'Senior product engineer in Tokyo with 10 years shipping web products end-to-end. TypeScript, React, Next.js, Node, Postgres, AWS, Kubernetes.';
+const DEFAULT_TITLE = 'Mark Omarov / Senior Product Engineer';
+const DEFAULT_DESCRIPTION = `Senior product engineer in Tokyo with ${PERSONAL.yearsShipping} years shipping web products end-to-end. TypeScript, React, Next.js, Node, Postgres, AWS, Kubernetes.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: DEFAULT_TITLE,
-    template: '%s - Mark Omarov',
+    template: '%s · Mark Omarov',
   },
   description: DEFAULT_DESCRIPTION,
   applicationName: SITE_NAME,
@@ -46,9 +61,7 @@ export const metadata: Metadata = {
     'Kubernetes',
     'Infrastructure as Code',
   ],
-  alternates: {
-    canonical: '/',
-  },
+  alternates: { canonical: '/' },
   robots: {
     index: true,
     follow: true,
@@ -77,30 +90,7 @@ export const metadata: Metadata = {
     creator: '@omarov',
   },
   manifest: '/site.webmanifest',
-  icons: [
-    { rel: 'icon', url: '/favicon.ico', sizes: 'any' },
-    {
-      rel: 'icon',
-      url: '/favicon-16x16.png',
-      sizes: '16x16',
-      type: 'image/png',
-    },
-    {
-      rel: 'icon',
-      url: '/favicon-32x32.png',
-      sizes: '32x32',
-      type: 'image/png',
-    },
-    { rel: 'apple-touch-icon', url: '/apple-touch-icon.png' },
-    { rel: 'mask-icon', url: '/favicon.ico' },
-  ],
 };
-
-const NAV_ITEMS: NavItem[] = [
-  { name: 'Home', path: '/' },
-  { name: 'Projects', path: '/projects' },
-  { name: 'Certificates', path: '/certificates' },
-];
 
 const personJsonLd = {
   '@context': 'https://schema.org',
@@ -109,10 +99,7 @@ const personJsonLd = {
   url: SITE_URL,
   image: `${SITE_URL}/avatar.webp`,
   jobTitle: 'Senior Product Engineer',
-  worksFor: {
-    '@type': 'Organization',
-    name: 'Cogent Labs',
-  },
+  worksFor: { '@type': 'Organization', name: 'Cogent Labs' },
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Tokyo',
@@ -138,27 +125,25 @@ const personJsonLd = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: ReactNode;
-}>) {
+}: Readonly<{ children: ReactNode }>) {
+  const fontVars = `${inter.variable} ${interTight.variable} ${jetbrainsMono.variable}`;
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={fontVars}>
       <head>
         {process.env.NODE_ENV !== 'production' && (
           <Script src="https://unpkg.com/react-scan/dist/auto.global.js" />
         )}
         <script
           type="application/ld+json"
-          // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body className={cn(jetbrainsMono.className, 'dark')}>
-        <div className="flex min-h-screen flex-col">
-          <Nav items={NAV_ITEMS} />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+      <body>
+        <HashScroller />
+        <SiteHeader />
+        <main>{children}</main>
+        <SiteFooter />
         <SpeedInsights />
         <Analytics />
       </body>

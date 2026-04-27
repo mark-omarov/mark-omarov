@@ -1,0 +1,381 @@
+/* Staggered reveal/boot animations split out of globals.css to keep that
+   file under the 800-line cap. Plain CSS — no @apply — so it can live
+   outside Tailwind's @layer components block. */
+
+/* ============================================================
+   Win-row stagger (experience.tsx) — list of recent achievements
+   per company; staggered reveal animation via nth-child.
+   ============================================================ */
+
+.win-row {
+  animation: revealUp 540ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.win-row:nth-child(1) {
+  animation-delay: 0ms;
+}
+.win-row:nth-child(2) {
+  animation-delay: 80ms;
+}
+.win-row:nth-child(3) {
+  animation-delay: 160ms;
+}
+.win-row:nth-child(4) {
+  animation-delay: 240ms;
+}
+.win-row:nth-child(5) {
+  animation-delay: 320ms;
+}
+.win-row:nth-child(6) {
+  animation-delay: 400ms;
+}
+.win-row:nth-child(7) {
+  animation-delay: 480ms;
+}
+.win-row:nth-child(8) {
+  animation-delay: 560ms;
+}
+
+/* ============================================================
+   Companies-strip stagger (companies-strip.tsx) — gated by
+   [data-seen=true] which the IntersectionObserver flips.
+   ============================================================ */
+
+.company-item {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 620ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 620ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    color 200ms ease;
+}
+[data-seen='true'] .company-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+.company-item:nth-child(1) {
+  transition-delay: 0ms;
+}
+.company-item:nth-child(2) {
+  transition-delay: 90ms;
+}
+.company-item:nth-child(3) {
+  transition-delay: 180ms;
+}
+.company-item:nth-child(4) {
+  transition-delay: 270ms;
+}
+.company-item:nth-child(5) {
+  transition-delay: 360ms;
+}
+.company-item:nth-child(6) {
+  transition-delay: 450ms;
+}
+.company-item:nth-child(7) {
+  transition-delay: 540ms;
+}
+.company-item:nth-child(8) {
+  transition-delay: 630ms;
+}
+.company-item:nth-child(9) {
+  transition-delay: 720ms;
+}
+.company-item:nth-child(10) {
+  transition-delay: 810ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .company-item {
+    transform: none;
+    transition: opacity 360ms ease;
+  }
+  [data-seen='true'] .company-item {
+    transform: none;
+  }
+  .company-item:nth-child(1) {
+    transition-delay: 0ms;
+  }
+  .company-item:nth-child(2) {
+    transition-delay: 60ms;
+  }
+  .company-item:nth-child(3) {
+    transition-delay: 120ms;
+  }
+  .company-item:nth-child(4) {
+    transition-delay: 180ms;
+  }
+  .company-item:nth-child(5) {
+    transition-delay: 240ms;
+  }
+  .company-item:nth-child(6) {
+    transition-delay: 300ms;
+  }
+  .company-item:nth-child(7) {
+    transition-delay: 360ms;
+  }
+  .company-item:nth-child(8) {
+    transition-delay: 420ms;
+  }
+  .company-item:nth-child(9) {
+    transition-delay: 480ms;
+  }
+  .company-item:nth-child(10) {
+    transition-delay: 540ms;
+  }
+}
+
+/* ============================================================
+   Stack-diagram boot animation (stack-diagram.tsx)
+   - layers fade/slide in by row index
+   - chips settle by global chip index
+   Gated by [data-boot=true] on the diagram root.
+   ============================================================ */
+
+.stack-layer {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition:
+    opacity 540ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 540ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+[data-boot='true'] .stack-layer {
+  opacity: 1;
+  transform: translateX(0);
+}
+.stack-layer:nth-child(1) {
+  transition-delay: 0ms;
+}
+.stack-layer:nth-child(2) {
+  transition-delay: 120ms;
+}
+.stack-layer:nth-child(3) {
+  transition-delay: 240ms;
+}
+.stack-layer:nth-child(4) {
+  transition-delay: 360ms;
+}
+.stack-layer:nth-child(5) {
+  transition-delay: 480ms;
+}
+.stack-layer:nth-child(6) {
+  transition-delay: 600ms;
+}
+.stack-layer:nth-child(7) {
+  transition-delay: 720ms;
+}
+.stack-layer:nth-child(8) {
+  transition-delay: 840ms;
+}
+
+.stack-chip {
+  border: 1px solid var(--color-rule);
+  background: var(--color-ink);
+  color: var(--color-graphite);
+  opacity: 0.35;
+  box-shadow: none;
+  transition:
+    opacity 360ms ease,
+    color 360ms ease,
+    box-shadow 600ms ease;
+}
+[data-boot='true'] .stack-chip {
+  opacity: 1;
+  color: var(--color-bone);
+}
+
+/* Per-chip delays follow chipBaseDelay (280ms) + idx * 70ms.
+   Reduced-motion uses 140ms base + idx * 35ms. Driven by a
+   data-idx attribute so the global chip index works across layers. */
+.stack-chip[data-idx='0'] {
+  transition-delay: 280ms;
+  animation: chipSettle 1200ms ease 480ms forwards;
+}
+.stack-chip[data-idx='1'] {
+  transition-delay: 350ms;
+  animation: chipSettle 1200ms ease 550ms forwards;
+}
+.stack-chip[data-idx='2'] {
+  transition-delay: 420ms;
+  animation: chipSettle 1200ms ease 620ms forwards;
+}
+.stack-chip[data-idx='3'] {
+  transition-delay: 490ms;
+  animation: chipSettle 1200ms ease 690ms forwards;
+}
+.stack-chip[data-idx='4'] {
+  transition-delay: 560ms;
+  animation: chipSettle 1200ms ease 760ms forwards;
+}
+.stack-chip[data-idx='5'] {
+  transition-delay: 630ms;
+  animation: chipSettle 1200ms ease 830ms forwards;
+}
+.stack-chip[data-idx='6'] {
+  transition-delay: 700ms;
+  animation: chipSettle 1200ms ease 900ms forwards;
+}
+.stack-chip[data-idx='7'] {
+  transition-delay: 770ms;
+  animation: chipSettle 1200ms ease 970ms forwards;
+}
+.stack-chip[data-idx='8'] {
+  transition-delay: 840ms;
+  animation: chipSettle 1200ms ease 1040ms forwards;
+}
+.stack-chip[data-idx='9'] {
+  transition-delay: 910ms;
+  animation: chipSettle 1200ms ease 1110ms forwards;
+}
+.stack-chip[data-idx='10'] {
+  transition-delay: 980ms;
+  animation: chipSettle 1200ms ease 1180ms forwards;
+}
+.stack-chip[data-idx='11'] {
+  transition-delay: 1050ms;
+  animation: chipSettle 1200ms ease 1250ms forwards;
+}
+.stack-chip[data-idx='12'] {
+  transition-delay: 1120ms;
+  animation: chipSettle 1200ms ease 1320ms forwards;
+}
+.stack-chip[data-idx='13'] {
+  transition-delay: 1190ms;
+  animation: chipSettle 1200ms ease 1390ms forwards;
+}
+.stack-chip[data-idx='14'] {
+  transition-delay: 1260ms;
+  animation: chipSettle 1200ms ease 1460ms forwards;
+}
+.stack-chip[data-idx='15'] {
+  transition-delay: 1330ms;
+  animation: chipSettle 1200ms ease 1530ms forwards;
+}
+.stack-chip[data-idx='16'] {
+  transition-delay: 1400ms;
+  animation: chipSettle 1200ms ease 1600ms forwards;
+}
+.stack-chip[data-idx='17'] {
+  transition-delay: 1470ms;
+  animation: chipSettle 1200ms ease 1670ms forwards;
+}
+.stack-chip[data-idx='18'] {
+  transition-delay: 1540ms;
+  animation: chipSettle 1200ms ease 1740ms forwards;
+}
+.stack-chip[data-idx='19'] {
+  transition-delay: 1610ms;
+  animation: chipSettle 1200ms ease 1810ms forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack-layer {
+    transform: none;
+    transition: opacity 320ms ease;
+  }
+  [data-boot='true'] .stack-layer {
+    transform: none;
+  }
+  .stack-layer:nth-child(1) {
+    transition-delay: 0ms;
+  }
+  .stack-layer:nth-child(2) {
+    transition-delay: 60ms;
+  }
+  .stack-layer:nth-child(3) {
+    transition-delay: 120ms;
+  }
+  .stack-layer:nth-child(4) {
+    transition-delay: 180ms;
+  }
+  .stack-layer:nth-child(5) {
+    transition-delay: 240ms;
+  }
+  .stack-layer:nth-child(6) {
+    transition-delay: 300ms;
+  }
+  .stack-layer:nth-child(7) {
+    transition-delay: 360ms;
+  }
+  .stack-layer:nth-child(8) {
+    transition-delay: 420ms;
+  }
+  .stack-chip[data-idx='0'] {
+    transition-delay: 140ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='1'] {
+    transition-delay: 175ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='2'] {
+    transition-delay: 210ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='3'] {
+    transition-delay: 245ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='4'] {
+    transition-delay: 280ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='5'] {
+    transition-delay: 315ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='6'] {
+    transition-delay: 350ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='7'] {
+    transition-delay: 385ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='8'] {
+    transition-delay: 420ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='9'] {
+    transition-delay: 455ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='10'] {
+    transition-delay: 490ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='11'] {
+    transition-delay: 525ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='12'] {
+    transition-delay: 560ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='13'] {
+    transition-delay: 595ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='14'] {
+    transition-delay: 630ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='15'] {
+    transition-delay: 665ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='16'] {
+    transition-delay: 700ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='17'] {
+    transition-delay: 735ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='18'] {
+    transition-delay: 770ms;
+    animation: none;
+  }
+  .stack-chip[data-idx='19'] {
+    transition-delay: 805ms;
+    animation: none;
+  }
+}
