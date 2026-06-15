@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { ImageResponse } from 'next/og';
 
-export const alt = 'Mark Omarov / Senior Product Engineer';
+export const alt = 'Mark Omarov / Principal Product Engineer';
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 
@@ -62,7 +62,7 @@ export default function OpenGraphImage() {
         <div
           style={{
             display: 'flex',
-            fontSize: 92,
+            fontSize: 80,
             fontWeight: 600,
             lineHeight: 1,
             letterSpacing: '-0.04em',
@@ -70,7 +70,7 @@ export default function OpenGraphImage() {
             whiteSpace: 'nowrap',
           }}
         >
-          Senior Product Engineer
+          Principal Product Engineer
         </div>
 
         <div

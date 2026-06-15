@@ -36,7 +36,7 @@ export function ContactSection() {
       <div className="grid grid-cols-2 gap-8 max-md:grid-cols-1">
         <div>
           <p className="text-bone m-0 max-w-[40ch] text-lg leading-[1.55]">
-            Open to Senior IC and Tech Lead roles.
+            Open to Senior, Staff, and Principal IC and Tech Lead roles.
             <br />
             Tokyo onsite/hybrid or global remote.
           </p>

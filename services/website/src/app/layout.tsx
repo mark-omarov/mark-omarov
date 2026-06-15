@@ -34,8 +34,8 @@ const jetbrainsMono = JetBrains_Mono({
 
 const SITE_URL = 'https://omarov.dev';
 const SITE_NAME = 'Mark Omarov';
-const DEFAULT_TITLE = 'Mark Omarov / Senior Product Engineer';
-const DEFAULT_DESCRIPTION = `Senior product engineer in Tokyo with ${PERSONAL.yearsShipping} years shipping web products end-to-end. TypeScript, React, Next.js, Node, Postgres, AWS, Kubernetes.`;
+const DEFAULT_TITLE = 'Mark Omarov / Principal Product Engineer';
+const DEFAULT_DESCRIPTION = `Principal product engineer in Tokyo with ${PERSONAL.yearsShipping} years shipping web products end-to-end. TypeScript, React, Next.js, Node, Postgres, AWS, Kubernetes.`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   creator: 'Mark Omarov',
   keywords: [
     'Mark Omarov',
-    'senior product engineer',
+    'principal product engineer',
     'Tokyo',
     'TypeScript',
     'React',
@@ -98,7 +98,7 @@ const personJsonLd = {
   name: 'Mark Omarov',
   url: SITE_URL,
   image: `${SITE_URL}/avatar.webp`,
-  jobTitle: 'Senior Product Engineer',
+  jobTitle: 'Principal Product Engineer',
   worksFor: { '@type': 'Organization', name: 'Cogent Labs' },
   address: {
     '@type': 'PostalAddress',

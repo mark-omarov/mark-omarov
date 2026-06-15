@@ -8,7 +8,7 @@ const yearsTokyo = currentYear - TOKYO_START_YEAR;
 export const PERSONAL = {
   name: 'Mark Omarov',
   handle: 'mark-omarov',
-  role: 'Senior Product Engineer',
+  role: 'Principal Product Engineer',
   company: 'Cogent Labs',
   location: 'Tokyo',
   timezone: 'Asia/Tokyo',
@@ -17,7 +17,7 @@ export const PERSONAL = {
   linkedin: 'https://linkedin.com/in/mark-omarov',
   yearsShipping,
   yearsTokyo,
-  status: 'Open to Senior IC and Tech Lead roles',
+  status: 'Open to Senior, Staff, and Principal IC and Tech Lead roles',
   availability: 'Tokyo onsite/hybrid or global remote',
   languages: ['English', 'Ukrainian', 'Russian', 'Japanese (learning)'],
 } as const;
@@ -29,6 +29,7 @@ export const STACK = [
   'Node.js',
   'NestJS',
   'PostgreSQL',
+  'Kafka',
   'AWS',
   'Kubernetes',
   'IaC',
@@ -37,9 +38,9 @@ export const STACK = [
 ] as const;
 
 export const THESIS = {
-  l1: 'Senior Product Engineer.',
+  l1: 'Principal Product Engineer.',
   l2: 'End to end.',
-  caption: `Senior product engineer with ${yearsShipping} years shipping web products end to end. Currently shipping production AI features at Cogent Labs in Tokyo. Strong track record of greenfield delivery, platform refactors, and zero-downtime migrations.`,
+  caption: `${yearsShipping} years shipping web products end to end. Currently leading Cogent Labs' AI product line in Tokyo, working directly with the CTO, ML, and product teams. Strong track record of org-level fixes, greenfield delivery, and zero-downtime migrations.`,
   approach: 'I treat LLMs as engineering components, not magic.',
 } as const;
 
@@ -49,7 +50,7 @@ export const SIGNALS: Signal[] = [
   { k: 'Tokyo', v: `${yearsTokyo} yrs` },
   { k: 'Shipping', v: `${yearsShipping} yrs` },
   { k: 'Current', v: 'Cogent Labs' },
-  { k: 'Open to', v: 'Senior IC / TL' },
+  { k: 'Open to', v: 'Senior / Staff / Principal' },
 ];
 
 export type Win = { tag: string; label: string; detail: string };
@@ -67,43 +68,71 @@ export type Job = {
 
 export const EXPERIENCE: Job[] = [
   {
-    title: 'Senior Product Engineer',
+    title: 'Principal Product Engineer',
     company: 'Cogent Labs',
-    dates: 'Mar 2025 – Present',
+    dates: 'May 2026 – Present',
     location: 'Tokyo',
     isCurrent: true,
     summary:
-      'End-to-end across new AI product lines, platform refactors, design system, and DX. Cross-functional with ML, product, design, and CTO.',
+      'AI product lead. Technical lead of a 4-engineer team building Cogent Labs’ AI product line. Authored the product RFC; partner directly with the CTO and lead designer on UX; own UI, backend, and ML integration end-to-end.',
     wins: [
       {
         tag: 'Lead',
-        label: 'New AI product line',
+        label: 'Cabinet, AI document platform',
         detail:
-          'Natural language instructions executed across user documents. Authored RFC, partnered with CTO and designer on UX, integrated with ML team models. Own UI, backend, and demo.',
+          'Built the initial product: natural-language instructions executed across enterprise documents. Now in limited preview, demoing to major enterprise prospects.',
+      },
+      {
+        tag: 'Lead',
+        label: 'Smart Automation line',
+        detail:
+          'Extends Cabinet with reconciliation, validation, and transformation systems integrated across the product lineup. In active development.',
       },
       {
         tag: 'Built',
         label: 'Document enhancement and serialization service',
         detail:
-          'NestJS, Kafka, S3, Postgres. Prepares documents for ML consumption, powers RAG and search pipelines.',
+          'NestJS, Kafka, S3, Postgres. Powers all ML ingestion, RAG pipelines, and downstream AI search.',
+      },
+    ],
+  },
+  {
+    title: 'Senior Product Engineer',
+    company: 'Cogent Labs',
+    dates: 'Mar 2025 – May 2026',
+    location: 'Tokyo',
+    summary:
+      'End-to-end across product lines, platform refactors, design system, and DX. Cross-functional with ML, product, design, and CTO.',
+    wins: [
+      {
+        tag: 'Solo',
+        label: 'SmartRead backend decoupling',
+        detail:
+          'Separated two tightly-coupled product backends into independently deployable, testable services. Removed a recurring cross-team release bottleneck and cut QA regression time 40-50% per release.',
+      },
+      {
+        tag: 'Built',
+        label: 'Document-types automation',
+        detail:
+          'Eliminated a ~1-month engineering release cycle: new ML-trained document types are validated via DB config and published by the owning team, zero engineering effort per release.',
+      },
+      {
+        tag: 'Migrated',
+        label: 'DataStore to PostgreSQL',
+        detail:
+          'Across 1,390+ client tenants with zero data loss and zero incidents.',
       },
       {
         tag: 'Shipped',
         label: 'Omakase Box, zero to production',
         detail:
-          'Greenfield product line: ordering flow, magic-link auth, sudo panel, IAM, JP localization, HubSpot. Mentored a junior engineer through delivery.',
+          'Greenfield: ordering flow, magic-link auth, admin panel, IAM/tenant management, JP localization, HubSpot. Mentored a junior engineer through delivery.',
       },
       {
-        tag: 'Solo',
-        label: 'SmartRead / SmartRead Classic backend split',
+        tag: 'Led',
+        label: 'Frontend migration and monorepo',
         detail:
-          'Reduced regression risk, narrowed QA scope per change, unblocked focused iteration. Highlighted internally as a major win.',
-      },
-      {
-        tag: 'Built',
-        label: 'Internal feature flag UI',
-        detail:
-          'Layered UI on top of an existing API-only system. Gave product direct ownership over rollouts without engineering in the loop.',
+          'styled-components to shadcn/ui + Tailwind with design-system practices. Drove monorepo migration to Turborepo + pnpm + changesets with automated releases.',
       },
     ],
   },
@@ -290,7 +319,7 @@ export const PROJECTS: Project[] = [
     title: 'Marshant',
     role: 'Creator',
     summary:
-      'Open-source feature flag platform. Self-hosted: flags, gradual rollouts, experiments. TypeScript and Next.js, designed for multi-tenancy and an open-core model.',
+      'Open-source feature flag platform. Self-hosted: flags, gradual rollouts, experiments. TypeScript and Next.js, designed for multi-tenancy and an open-core model. Originated as a tie-winning entry at an internal Cogent Labs hackathon.',
     stack: ['TS', 'NEXT', 'POSTGRES', 'DOCKER'],
     status: 'Active',
     href: 'https://github.com/trunklabs/marshant',

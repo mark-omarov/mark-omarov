@@ -16,7 +16,7 @@ export function SiteFooter() {
           <Sigil>MARK OMAROV · TOKYO</Sigil>
           <p className="text-graphite mt-4 max-w-[34ch] text-sm leading-normal">
             Hands-on engineer building a better web, line by line. Currently in
-            Tokyo, open to senior IC roles in 2026.
+            Tokyo, open to senior, staff, and principal IC roles in 2026.
           </p>
         </div>
         <div className="col-span-3 max-md:col-span-1">
