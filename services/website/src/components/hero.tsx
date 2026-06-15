@@ -14,11 +14,11 @@ export function Hero() {
           <Sigil className="whitespace-nowrap">{sigil}</Sigil>
           <span className="bg-rule h-px w-6 max-md:hidden" />
           <Sigil dim className="whitespace-nowrap">
-            Senior Product Engineer · Cogent Labs
+            AI Product Lead · Cogent Labs
           </Sigil>
           <span className="bg-rule h-px min-w-6 flex-1 max-md:hidden" />
           <Sigil accent className="whitespace-nowrap">
-            Open to Senior IC / Tech Lead
+            Open to Senior / Staff / Principal
           </Sigil>
         </div>
 
