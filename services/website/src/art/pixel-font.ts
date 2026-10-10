@@ -1,6 +1,6 @@
 // A tiny proportional pixel font: capitals and digits 5px tall, lowercase
 // with a 4px x-height and 2px descenders. Enough for course titles, names
-// and dates on the /learned certificates.
+// and dates on the /learned certificates, and the GitHub profile cards.
 
 import type { Frame, RGB } from './frame';
 
@@ -83,6 +83,9 @@ const G: Record<string, string[]> = {
   '?': ['##.', '..#', '.#.', '...', '.#.'],
   '+': ['...', '.#.', '###', '.#.', '...'],
   '#': ['#.#', '###', '#.#', '###', '#.#'],
+  '@': ['.###.', '#...#', '#.###', '#.#.#', '#.###', '#....', '.###.'],
+  '~': ['....', '....', '.#.#', '#.#.', '....'],
+  $: ['.##', '##.', '.#.', '.##', '##.'],
 };
 
 const glyph = (ch: string) => G[ch] ?? G['?']!;
