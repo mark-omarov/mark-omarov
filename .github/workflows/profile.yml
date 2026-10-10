@@ -44,13 +44,29 @@ jobs:
       - run: pnpm --filter @workspace/website run draw-profile
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # through the API, so GitHub signs the commit: main only takes signed ones
       - name: Commit
         if: github.event_name != 'pull_request'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git add .github/profile
-          git diff --cached --quiet && exit 0
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git commit -m 'Redraw the profile images'
-          git pull --rebase origin main
-          git push
+          changed=$(git status --porcelain --untracked-files=all .github/profile | cut -c4-)
+          [ -z "$changed" ] && exit 0
+          body="$RUNNER_TEMP/commit.json"
+          jq -n --arg repo "$GITHUB_REPOSITORY" --arg branch "$GITHUB_REF_NAME" --arg head "$(git rev-parse HEAD)" '{
+            query: "mutation ($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input: $input) { commit { url } } }",
+            variables: { input: {
+              branch: { repositoryNameWithOwner: $repo, branchName: $branch },
+              expectedHeadOid: $head,
+              message: { headline: "Redraw the profile images" },
+              fileChanges: { additions: [] }
+            } }
+          }' > "$body"
+          for f in $changed; do
+            base64 -w0 "$f" > "$RUNNER_TEMP/file.b64"
+            jq --arg path "$f" --rawfile contents "$RUNNER_TEMP/file.b64" \
+              '.variables.input.fileChanges.additions += [{ path: $path, contents: $contents }]' \
+              "$body" > "$RUNNER_TEMP/next.json"
+            mv "$RUNNER_TEMP/next.json" "$body"
+          done
+          gh api graphql --input "$body" --jq .data.createCommitOnBranch.commit.url
