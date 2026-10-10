@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { pageMeta } from '~/lib/meta';
 import { type CourseEntry, CourseLog } from '~/components/course-log';
 import { HolopinBoard } from '~/components/holopin-board';
-import { COURSES, courseLinks, coursesByYear } from '~/data/courses';
+import { courseLinks, coursesByYear } from '~/data/courses';
 
 const slug = (s: string) =>
   s
@@ -31,20 +31,14 @@ export default function LearnedPage() {
       ...courseLinks(c),
     })),
   ]);
-  const issuers = new Set(COURSES.map((c) => c.issuer)).size;
 
   return (
     <div className="page mt-10">
       <h1 className="font-pixel text-4xl leading-none">learned</h1>
-      <div className="text-soft mt-4 space-y-3">
-        <p>
-          Courses and certificates I&apos;ve picked up over the years, mostly
-          self-paced online stuff. Kept here as a log.
-        </p>
-        <p className="text-muted text-sm">
-          {COURSES.length} courses from {issuers} places, newest first.
-        </p>
-      </div>
+      <p className="text-soft mt-4">
+        Courses and certificates I&apos;ve picked up over the years, mostly
+        self-paced online stuff. Kept here as a log.
+      </p>
 
       <section aria-labelledby="badges" className="mt-10">
         <h2 id="badges" className="heading">
