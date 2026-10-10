@@ -1,0 +1,56 @@
+name: Profile
+
+on:
+  schedule:
+    # just after midnight in Tokyo, when the banner moves to the next place
+    - cron: '5 15 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - services/website/scripts/profile/**
+      - services/website/src/art/**
+      - services/website/src/data/site.ts
+      - services/website/content/blog/**
+      - services/website/package.json
+      - .github/workflows/profile.yml
+  pull_request:
+    paths:
+      - services/website/scripts/profile/**
+      - services/website/src/art/**
+      - services/website/src/data/site.ts
+      - services/website/content/blog/**
+      - services/website/package.json
+      - .github/workflows/profile.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: profile-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --filter @workspace/website
+      - run: pnpm --filter @workspace/website run draw-profile
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit
+        if: github.event_name != 'pull_request'
+        run: |
+          git add .github/profile
+          git diff --cached --quiet && exit 0
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Redraw the profile images'
+          git pull --rebase origin main
+          git push
