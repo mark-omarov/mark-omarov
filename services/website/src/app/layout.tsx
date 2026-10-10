@@ -1,135 +1,94 @@
 import './globals.css';
 
 import type { ReactNode } from 'react';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import Script from 'next/script';
-import { Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/next';
 import { SiteHeader } from '~/components/site-header';
 import { SiteFooter } from '~/components/site-footer';
-import { HashScroller } from '~/components/hash-scroller';
-import { PERSONAL } from '~/data/content';
+import { VimKeys } from '~/components/vim-keys';
+import { RSS } from '~/lib/meta';
+import { getAllPosts } from '~/lib/posts';
+import { SITE } from '~/data/site';
 
-const inter = Inter({
-  subsets: ['latin'],
-  weight: ['400', '500'],
-  variable: '--font-inter',
-  display: 'swap',
-});
-
-const interTight = Inter_Tight({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--font-inter-tight',
-  display: 'swap',
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  weight: ['400', '500'],
+// Self-hosted (OFL licensed, see src/fonts) so builds don't depend on Google Fonts.
+const mono = localFont({
+  src: [
+    {
+      path: '../fonts/jetbrains-mono-latin-wght-normal.woff2',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/jetbrains-mono-latin-wght-italic.woff2',
+      style: 'italic',
+    },
+  ],
+  weight: '100 800',
   variable: '--font-jetbrains-mono',
   display: 'swap',
 });
 
-const SITE_URL = 'https://omarov.dev';
-const SITE_NAME = 'Mark Omarov';
-const DEFAULT_TITLE = 'Mark Omarov / Principal Product Engineer';
-const DEFAULT_DESCRIPTION = `Principal product engineer in Tokyo with ${PERSONAL.yearsShipping} years shipping web products end-to-end. TypeScript, React, Next.js, Node, Postgres, AWS, Kubernetes.`;
+const pixel = localFont({
+  src: '../fonts/pixelify-sans-latin-wght-normal.woff2',
+  weight: '400 700',
+  variable: '--font-pixelify',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL(SITE_URL),
-  title: {
-    default: DEFAULT_TITLE,
-    template: '%s · Mark Omarov',
-  },
-  description: DEFAULT_DESCRIPTION,
-  applicationName: SITE_NAME,
-  authors: [{ name: 'Mark Omarov', url: SITE_URL }],
-  creator: 'Mark Omarov',
-  keywords: [
-    'Mark Omarov',
-    'principal product engineer',
-    'Tokyo',
-    'TypeScript',
-    'React',
-    'Next.js',
-    'Node.js',
-    'NestJS',
-    'PostgreSQL',
-    'AWS',
-    'Kubernetes',
-    'Infrastructure as Code',
-  ],
-  alternates: { canonical: '/' },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-      'max-video-preview': -1,
-    },
-  },
+  metadataBase: new URL(SITE.url),
+  title: { default: SITE.title, template: `%s · ${SITE.name}` },
+  description: SITE.description,
+  applicationName: SITE.name,
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
+  alternates: { canonical: '/', types: RSS },
   openGraph: {
-    type: 'profile',
+    type: 'website',
     locale: 'en_US',
-    siteName: SITE_NAME,
-    url: SITE_URL,
-    title: DEFAULT_TITLE,
-    description: DEFAULT_DESCRIPTION,
-    firstName: 'Mark',
-    lastName: 'Omarov',
+    siteName: SITE.name,
+    url: SITE.url,
+    title: SITE.title,
+    description: SITE.description,
   },
   twitter: {
     card: 'summary_large_image',
-    title: DEFAULT_TITLE,
-    description: DEFAULT_DESCRIPTION,
-    creator: '@omarov',
+    title: SITE.title,
+    description: SITE.description,
   },
   manifest: '/site.webmanifest',
+};
+
+export const viewport: Viewport = {
+  themeColor: '#1a1b26',
+  colorScheme: 'dark',
 };
 
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Mark Omarov',
-  url: SITE_URL,
-  image: `${SITE_URL}/avatar.webp`,
-  jobTitle: 'Principal Product Engineer',
-  worksFor: { '@type': 'Organization', name: 'Cogent Labs' },
+  name: SITE.name,
+  url: SITE.url,
+  email: `mailto:${SITE.email}`,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Tokyo',
     addressCountry: 'JP',
   },
-  email: 'mailto:mark@omarov.dev',
-  sameAs: [
-    'https://github.com/mark-omarov',
-    'https://www.linkedin.com/in/mark-omarov/',
-  ],
-  knowsAbout: [
-    'TypeScript',
-    'React',
-    'Next.js',
-    'Node.js',
-    'NestJS',
-    'PostgreSQL',
-    'AWS',
-    'Kubernetes',
-    'Infrastructure as Code',
-  ],
+  sameAs: [SITE.github, SITE.linkedin],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: ReactNode }>) {
-  const fontVars = `${inter.variable} ${interTight.variable} ${jetbrainsMono.variable}`;
-
+  const posts = (await getAllPosts()).map((p) => ({
+    title: p.title,
+    href: `/blog/${p.slug}`,
+  }));
   return (
-    <html lang="en" suppressHydrationWarning className={fontVars}>
+    <html lang="en" className={`${mono.variable} ${pixel.variable}`}>
       <head>
         {process.env.NODE_ENV !== 'production' && (
           <Script src="https://unpkg.com/react-scan/dist/auto.global.js" />
@@ -139,11 +98,19 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </head>
-      <body>
-        <HashScroller />
+      <body className="flex flex-col">
+        <a
+          href="#content"
+          className="bg-yellow text-bg sr-only z-50 px-3 py-1 focus:not-sr-only focus:fixed focus:left-2 focus:top-2"
+        >
+          skip to content
+        </a>
         <SiteHeader />
-        <main>{children}</main>
+        <main id="content" className="flex-1">
+          {children}
+        </main>
         <SiteFooter />
+        <VimKeys posts={posts} />
         <SpeedInsights />
         <Analytics />
       </body>

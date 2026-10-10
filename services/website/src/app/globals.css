@@ -1,519 +1,491 @@
 @import 'tailwindcss';
-@import './staggers.css';
 
 @source "../**/*.{ts,tsx}";
 
+/* Tokyo Night, because I live in Tokyo and it's a good palette. */
 @theme {
-  /* Breakpoints — match the original 480/720/1024 stops. */
-  --breakpoint-sm: 480px;
-  --breakpoint-md: 720px;
-  --breakpoint-lg: 1024px;
+  --color-bg: #1a1b26;
+  --color-bg-dark: #16161e;
+  --color-surface: #1f2335;
+  --color-line: #2f334d;
+  --color-muted: #8189b5;
+  --color-soft: #a9b1d6;
+  --color-fg: #c0caf5;
+  --color-blue: #7aa2f7;
+  --color-cyan: #7dcfff;
+  --color-green: #9ece6a;
+  --color-yellow: #e0af68;
+  --color-orange: #ff9e64;
+  --color-red: #f7768e;
+  --color-purple: #bb9af7;
 
-  /* Editorial / Swiss palette — single source of truth for both themes.
-     Light theme overrides these on `html.theme-light` below. */
-  --color-ink: oklch(0.14 0.005 250);
-  --color-paper: oklch(0.18 0.006 250);
-  --color-vellum: oklch(0.22 0.007 250);
-  --color-bone: oklch(0.96 0.004 90);
-  --color-graphite: oklch(0.62 0.008 250);
-  --color-rule: oklch(0.28 0.006 250);
-  --color-signal: oklch(0.78 0.14 75);
-  --color-signal-ink: oklch(0.32 0.1 75);
-
-  /* Fonts — wired to next/font CSS variables defined in layout.tsx. */
-  --font-sans:
-    var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-display:
-    var(--font-inter-tight), Inter, ui-sans-serif, system-ui, -apple-system,
-    sans-serif;
   --font-mono:
     var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-
-  /* Named animations exposed as `animate-*` utilities. */
-  --animate-cursor-fade: cursorFade 1.6s ease-in-out infinite;
-  --animate-dot-breathe: dotBreathe 3.2s ease-in-out infinite;
-  --animate-reveal-up: revealUp 540ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  --animate-hero-reveal: revealUp 820ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  --animate-header-slide: headerSlide 720ms cubic-bezier(0.2, 0.7, 0.2, 1) 60ms
-    both;
-  --animate-panel-slide-in: panelSlideIn 320ms cubic-bezier(0.2, 0.7, 0.2, 1)
-    forwards;
-  --animate-panel-scrim: panelScrim 220ms ease forwards;
-  --animate-breathe: breathe 1.4s ease-in-out infinite;
-  --animate-fade-in: fadeIn 480ms ease both;
-  --animate-fade-in-fast: fadeIn 200ms ease both;
-}
-
-/* Light theme: override CSS variables; all `bg-ink`, `text-bone`, etc.
-   utilities flip automatically because they reference the variables. */
-html.theme-light {
-  --color-ink: oklch(0.97 0.004 90);
-  --color-paper: oklch(0.94 0.004 90);
-  --color-vellum: oklch(0.91 0.005 90);
-  --color-bone: oklch(0.18 0.006 250);
-  --color-graphite: oklch(0.46 0.008 250);
-  --color-rule: oklch(0.84 0.006 90);
-}
-
-@keyframes cursorFade {
-  0%,
-  100% {
-    opacity: 0.95;
-  }
-  50% {
-    opacity: 0.15;
-  }
-}
-@keyframes dotBreathe {
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.55;
-    transform: scale(0.9);
-  }
-}
-@keyframes revealUp {
-  0% {
-    opacity: 0;
-    transform: translateY(22px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes headerSlide {
-  0% {
-    opacity: 0;
-    transform: translateY(-12px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@keyframes panelSlideIn {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-@keyframes panelScrim {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes breathe {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: scale(0.85);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes drawLine {
-  0% {
-    transform: scaleX(0);
-    opacity: 0;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    transform: scaleX(1);
-    opacity: 1;
-  }
-}
-@keyframes chipSettle {
-  0% {
-    box-shadow: 0 0 0 1px
-      color-mix(in oklab, var(--color-signal) 22%, transparent);
-  }
-  100% {
-    box-shadow: 0 0 0 1px transparent;
-  }
+  --font-pixel: var(--font-pixelify), var(--font-jetbrains-mono), monospace;
 }
 
 @layer base {
-  * {
-    box-sizing: border-box;
+  html {
+    color-scheme: dark;
+    background: var(--color-bg);
+    scrollbar-color: var(--color-line) var(--color-bg);
   }
-  html,
   body {
     margin: 0;
-    padding: 0;
-  }
-  html {
-    scroll-behavior: smooth;
-    /* Use clip (not hidden) so it doesn't create a scroll container that
-       would break position: sticky. */
-    overflow-x: clip;
-  }
-  body {
-    background: var(--color-ink);
-    color: var(--color-bone);
-    font-family: var(--font-sans);
-    font-size: 16px;
-    line-height: 1.5;
+    min-height: 100dvh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-mono);
+    font-size: 15px;
+    line-height: 1.7;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-    transition:
-      background 240ms ease,
-      color 240ms ease;
-    overflow-x: clip;
+    font-feature-settings: 'calt' 0;
+  }
+  ::selection {
+    background: var(--color-purple);
+    color: var(--color-bg);
   }
   a {
     color: inherit;
   }
-  ::selection {
-    background: var(--color-signal);
-    color: var(--color-signal-ink);
+  :focus-visible {
+    outline: 2px dashed var(--color-yellow);
+    outline-offset: 3px;
   }
-  @media (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: no-preference) {
     html {
-      scroll-behavior: auto;
+      scroll-behavior: smooth;
     }
   }
-}
-
-/* JetBrains Mono stylistic sets — applied wherever font-mono is used. */
-.font-mono {
-  font-feature-settings: 'ss01', 'ss02';
 }
 
 @layer components {
-  .grid-container {
-    @apply mx-auto w-full max-w-[1320px] px-8 max-lg:px-7 max-md:px-5 max-sm:px-4;
+  .page {
+    @apply mx-auto w-full max-w-[44rem] px-4;
   }
 
-  /* ============================================================
-     Buttons & links
-     ============================================================ */
-
-  .btn-primary {
-    @apply border-bone bg-bone text-ink inline-flex cursor-pointer items-center gap-1.5 border px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] no-underline transition-colors duration-150;
-  }
-  .btn-primary:hover {
-    @apply border-signal bg-signal text-signal-ink;
+  .link {
+    @apply decoration-line hover:decoration-blue underline decoration-1 underline-offset-4 transition-colors;
   }
 
-  .btn-ghost {
-    @apply border-rule text-bone inline-flex cursor-pointer items-center gap-1.5 border bg-transparent px-4 py-2.5 font-mono text-xs uppercase tracking-[0.14em] no-underline transition-colors duration-150;
-  }
-  .btn-ghost:hover {
-    @apply border-bone;
+  .heading {
+    @apply font-pixel text-blue text-xl leading-none;
   }
 
-  .link-arrow {
-    @apply border-rule text-bone inline-flex cursor-pointer items-center gap-1.5 border-0 border-b bg-transparent pb-1 font-mono text-xs uppercase tracking-[0.14em] no-underline transition-colors duration-150;
-  }
-  .link-arrow:hover {
-    @apply border-signal text-signal;
+  .btn {
+    @apply border-line hover:border-green hover:text-green disabled:hover:border-line disabled:hover:text-fg border px-3 py-1 transition-colors disabled:cursor-not-allowed disabled:opacity-40;
   }
 
-  .link-quiet {
-    @apply text-bone border-b border-transparent text-sm no-underline transition-[border-color] duration-150;
+  .bubble {
+    @apply bg-bg-dark border-fg text-fg absolute z-10 w-max max-w-[min(16rem,80vw)] -translate-x-1/2 -translate-y-full border-2 px-2 py-1 text-xs leading-snug;
+    box-shadow: 3px 3px 0 0 #0b0d17;
   }
-  .link-quiet:hover {
-    @apply border-signal;
-  }
-
-  .btn-primary .arrow,
-  .btn-ghost .arrow,
-  .link-arrow .arrow {
-    display: inline-block;
-    transition: transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
-  }
-  .btn-primary:hover .arrow,
-  .btn-ghost:hover .arrow {
-    transform: translate(2px, -2px);
-  }
-  .link-arrow:hover .arrow {
-    transform: translate(3px, 0);
-  }
-  .link-arrow:hover .arrow.arrow-up {
-    transform: translate(2px, -2px);
-  }
-
-  /* ============================================================
-     Mono micro-typography
-     ============================================================ */
-
-  .sigil {
-    @apply text-bone font-mono text-[11px] uppercase tracking-[0.18em];
-  }
-  .sigil-dim {
-    @apply text-graphite;
-  }
-  .sigil-accent {
-    @apply text-signal;
-  }
-
-  .chip-mono {
-    @apply border-rule text-graphite inline-block border px-2 py-1 font-mono text-[11px] uppercase tracking-[0.14em];
-  }
-
-  /* ============================================================
-     Site header
-     ============================================================ */
-
-  .site-header {
-    animation: headerSlide 720ms cubic-bezier(0.2, 0.7, 0.2, 1) 60ms both;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .site-header {
-      animation: fadeIn 480ms ease 60ms both;
-    }
-  }
-
-  /* Translucent header background — color-mix isn't expressible as a
-     plain Tailwind utility, so encode it as a component class. */
-  .site-header-bg {
-    background: color-mix(in oklab, var(--color-ink) 88%, transparent);
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-  }
-
-  .nav-item {
-    @apply text-graphite relative font-mono text-xs uppercase tracking-[0.14em] no-underline transition-colors duration-150;
-  }
-  .nav-item:hover {
-    @apply text-bone;
-  }
-  .nav-item[data-active='true'] {
-    @apply text-bone;
-  }
-  .nav-item[data-active='true']::after {
+  .bubble::after {
     content: '';
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -2px;
-    height: 1px;
-    background: var(--color-signal);
+    left: 50%;
+    bottom: -8px;
+    width: 8px;
+    height: 6px;
+    transform: translateX(-50%);
+    background: var(--color-fg);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
   }
+  /* near the edges the bubble hangs off to one side so it stays on screen */
+  .bubble-start {
+    transform: translate(-14px, -100%);
+  }
+  .bubble-start::after {
+    left: 14px;
+  }
+  .bubble-end {
+    transform: translate(calc(-100% + 14px), -100%);
+  }
+  .bubble-end::after {
+    left: calc(100% - 14px);
+  }
+}
 
-  /* ============================================================
-     Index table (projects page)
-     ============================================================ */
+/* A chunky pixel border: notched corners and blinking studs */
+.pixel-frame {
+  position: relative;
+  padding: 14px;
+  background: var(--color-bg-dark);
+  box-shadow:
+    0 -4px 0 0 var(--color-line),
+    0 4px 0 0 var(--color-line),
+    -4px 0 0 0 var(--color-line),
+    4px 0 0 0 var(--color-line),
+    inset 0 4px 0 0 #24283b;
+}
+.pixel-frame:hover {
+  box-shadow:
+    0 -4px 0 0 var(--color-blue),
+    0 4px 0 0 var(--color-blue),
+    -4px 0 0 0 var(--color-blue),
+    4px 0 0 0 var(--color-blue),
+    inset 0 4px 0 0 #24283b;
+}
+.pixel-frame-studs::before,
+.pixel-frame-studs::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  width: 4px;
+  height: 4px;
+  background: var(--color-yellow);
+  animation: stud-blink 1.6s steps(1) infinite;
+}
+.pixel-frame-studs::before {
+  left: 4px;
+}
+.pixel-frame-studs::after {
+  right: 4px;
+  animation-delay: 0.8s;
+}
+@keyframes stud-blink {
+  50% {
+    background: var(--color-orange);
+    opacity: 0.4;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pixel-frame-studs::before,
+  .pixel-frame-studs::after {
+    animation: none;
+  }
+}
 
-  .tbl-head,
-  .tbl-row {
-    @apply border-rule -mx-[18px] grid grid-cols-12 gap-4 border-b px-[18px];
-  }
-  .tbl-head {
-    @apply text-graphite py-4 font-mono text-[11px] uppercase tracking-[0.16em];
-  }
-  .tbl-row {
-    @apply text-bone items-baseline py-[22px] no-underline transition-colors duration-150;
-  }
-  .tbl-row:hover {
-    @apply bg-paper;
-  }
-  .tbl-row:hover .cell-title,
-  .tbl-row:hover .cell-arrow {
-    @apply text-signal;
-  }
-
-  .cell-mono {
-    @apply text-graphite pt-0.5 font-mono text-xs tracking-wider;
-  }
-  .cell-title {
-    @apply font-display text-xl font-medium leading-tight tracking-tight transition-colors duration-150;
-  }
-  .cell-sub {
-    @apply text-graphite mt-1 max-w-[50ch] text-[13px] leading-[1.45];
-  }
-  .cell-stack {
-    @apply text-graphite pt-1 font-mono text-[11px] tracking-[0.12em];
-  }
-  .cell-arrow {
-    @apply text-graphite pt-0.5 font-mono text-base transition-[color,transform] duration-150;
-  }
-
-  @media (max-width: 720px) {
-    .tbl-head,
-    .tbl-row {
-      grid-template-columns: 1fr !important;
-      gap: 6px !important;
-    }
-    .tbl-head {
-      display: none !important;
-    }
-    .tbl-row .cell-arrow,
-    .tbl-row .cell-link {
-      text-align: left !important;
-    }
-  }
-
-  /* ============================================================
-     Ledger (certificates page)
-     ============================================================ */
-
-  .ledger-head {
-    @apply text-bone flex w-full cursor-pointer items-center justify-between border-0 bg-transparent py-[26px] text-left;
-    font-family: inherit;
-  }
-  .ledger-toggle {
-    @apply border-rule text-graphite inline-flex h-[22px] w-[22px] items-center justify-center border font-mono text-sm;
-  }
-  .ledger-title {
-    @apply font-display text-bone text-[clamp(22px,2.4vw,32px)] font-medium tracking-tight;
-  }
-  .ledger-head:hover .ledger-toggle {
-    @apply border-signal text-signal;
-  }
-
-  .ledger-row {
-    @apply transition-colors duration-200;
-  }
-  .ledger-row:focus-visible {
-    outline: 1px solid var(--color-signal);
-    outline-offset: -1px;
-  }
-  .ledger-arrow {
-    transition:
-      transform 180ms ease,
-      color 180ms ease;
-  }
-
-  /* ============================================================
-     Featured project tiles
-     ============================================================ */
-
-  .project-tile {
-    position: relative;
-    transition:
-      background 200ms ease,
-      transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
-  }
-  .project-tile::after {
-    content: '';
-    position: absolute;
-    left: 28px;
-    right: 28px;
-    bottom: 0;
-    height: 1px;
-    background: var(--color-signal);
-    transform: scaleX(0);
-    transform-origin: left center;
-    transition: transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
-  }
-  .project-tile:hover::after {
-    transform: scaleX(1);
-  }
-
-  /* Cert headline + contact row — hover background is applied via
-     Tailwind `hover:bg-paper` in JSX so it lands in the utilities
-     layer and beats the base `bg-ink` utility. */
-  .cert-headline,
-  .contact-row {
-    transition: background 160ms ease;
-  }
-
-  /* ============================================================
-     Reveal-on-scroll (set by RevealObserver client component)
-     ============================================================ */
-
-  [data-reveal] {
+/* The course dialog on /learned */
+.course-dialog {
+  position: fixed;
+  inset: 0;
+  border: 0;
+  margin: auto;
+  width: min(30rem, calc(100vw - 2.5rem));
+  max-height: calc(100dvh - 2.5rem);
+  overflow-y: auto;
+  color: var(--color-fg);
+  padding: 22px 20px 18px;
+}
+.course-dialog[open] {
+  animation: dialog-pop 180ms steps(3) both;
+}
+.course-dialog::backdrop {
+  /* a dithered dim, two-pixel checker over the page */
+  background:
+    repeating-conic-gradient(#0b0d17 0 25%, transparent 0 50%) 0 0 / 4px 4px,
+    rgba(11, 13, 23, 0.55);
+}
+@keyframes dialog-pop {
+  from {
+    transform: translateY(12px) scale(0.96);
     opacity: 0;
-    transform: translateY(28px);
-    transition:
-      opacity 820ms cubic-bezier(0.2, 0.7, 0.2, 1),
-      transform 820ms cubic-bezier(0.2, 0.7, 0.2, 1);
   }
-  [data-reveal][data-revealed='true'] {
-    opacity: 1;
-    transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .course-dialog[open] {
+    animation: none;
   }
-  @media (prefers-reduced-motion: reduce) {
-    [data-reveal] {
-      transform: none;
-      transition: opacity 480ms ease;
-    }
-    [data-reveal][data-revealed='true'] {
-      transform: none;
-    }
-    .breathe-dot,
-    [data-cursor-blink] {
-      animation: none !important;
-    }
-  }
+}
 
-  /* Stagger animations for win-row, company-item, stack-layer, and
-     stack-chip live in ./staggers.css to keep this file under the
-     800-line cap. */
-
-  /* ============================================================
-     Hero reveal — used in hero.tsx for staggered entry. Each row
-     applies an explicit Tailwind arbitrary value for delay
-     (`[animation-delay:120ms]` etc.).
-     ============================================================ */
-
-  .hero-reveal {
-    animation: revealUp 820ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-reveal {
-      animation: fadeIn 480ms ease both;
-    }
-  }
-
-  /* ============================================================
-     CursorPlacer phases (primitives-client.tsx)
-     - pre:   period hidden, cursor static at 0
-     - place: period visible, cursor at translateX(-0.42em)
-     - rest:  period visible, cursor at 0, blinking
-     ============================================================ */
-
-  .cursor-period {
+/* The current place's eggs under the picture */
+.egg-slots {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 3px;
+  cursor: pointer;
+}
+.egg-slots:hover {
+  filter: brightness(1.25);
+}
+.egg-note {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  right: 0;
+  padding: 1px 6px;
+  white-space: nowrap;
+  background: var(--color-bg-dark);
+  border: 1px solid var(--color-line);
+  color: var(--color-yellow);
+  font-size: 11px;
+  pointer-events: none;
+  animation: egg-note 2.6s steps(6) both;
+}
+@keyframes egg-note {
+  0% {
     opacity: 0;
-    transition: opacity 180ms ease;
+    transform: translateY(4px);
   }
-  [data-placer-phase='place'] .cursor-period,
-  [data-placer-phase='rest'] .cursor-period {
+  10%,
+  85% {
     opacity: 1;
+    transform: none;
   }
+  100% {
+    opacity: 0;
+  }
+}
+.egg-menu {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  right: -4px;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  padding: 8px 12px;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.egg-menu button {
+  padding: 3px 0;
+  color: var(--color-fg);
+  cursor: pointer;
+}
+.egg-menu button:hover,
+.egg-menu button:focus-visible {
+  color: var(--color-yellow);
+}
+/* hot or cold: how the eggs answer a tap that missed */
+.egg-slots.is-cold {
+  animation: egg-cold 420ms steps(6);
+  filter: drop-shadow(0 0 3px #7aa2f7);
+}
+.egg-slots.is-warm {
+  animation: egg-warm 520ms steps(6);
+  filter: drop-shadow(0 0 4px #ff9e64);
+}
+.egg-slots.is-hot {
+  animation: egg-hot 620ms steps(6);
+  filter: drop-shadow(0 0 6px #ffd54a);
+}
+@keyframes egg-cold {
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+@keyframes egg-warm {
+  25% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+}
+@keyframes egg-hot {
+  30% {
+    transform: translateY(-6px) scale(1.15);
+  }
+  60% {
+    transform: translateY(0) scale(1);
+  }
+  80% {
+    transform: translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .egg-slots,
+  .egg-note {
+    animation: none !important;
+  }
+}
 
-  .cursor-blink {
-    transform: translateX(0);
-    transition: transform 240ms cubic-bezier(0.5, 0, 0.2, 1);
-    margin-left: 0.18em;
+/* Vim keys */
+.vim-hint {
+  position: absolute;
+  z-index: 60;
+  padding: 0 3px;
+  transform: translate(-2px, -6px);
+  background: var(--color-yellow);
+  color: #16161e;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 15px;
+  text-transform: uppercase;
+  box-shadow:
+    0 0 0 1px #16161e,
+    2px 2px 0 0 #0b0d17;
+}
+.vim-hint b {
+  color: var(--color-red);
+}
+.vim-line {
+  position: fixed;
+  inset: auto 0 0 0;
+  z-index: 70;
+  padding: 6px 12px 8px;
+  background: var(--color-bg-dark);
+  border-top: 2px solid var(--color-line);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 14px;
+  color: var(--color-fg);
+}
+.vim-menu {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: var(--color-soft);
+}
+.vim-menu li {
+  padding: 0 6px;
+}
+.vim-menu li.is-picked {
+  background: var(--color-blue);
+  color: #16161e;
+}
+.vim-status {
+  position: fixed;
+  right: 12px;
+  bottom: 10px;
+  z-index: 70;
+  max-width: min(36rem, calc(100vw - 24px));
+  padding: 3px 8px;
+  background: var(--color-bg-dark);
+  border: 2px solid var(--color-line);
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 12px;
+  color: var(--color-soft);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.vim-help {
+  position: fixed;
+  inset: 0;
+  border: 0;
+  margin: auto;
+  width: min(32rem, calc(100vw - 2.5rem));
+  max-height: calc(100dvh - 2.5rem);
+  overflow-y: auto;
+  color: var(--color-fg);
+  padding: 22px 22px 18px;
+}
+.vim-help::backdrop {
+  background:
+    repeating-conic-gradient(#0b0d17 0 25%, transparent 0 50%) 0 0 / 4px 4px,
+    rgba(11, 13, 23, 0.55);
+}
+.vim-footer-hint kbd {
+  padding: 0 4px;
+  border: 1px solid var(--color-line);
+  font-family: inherit;
+}
+/* only where there's a keyboard and a mouse */
+@media not ((hover: hover) and (pointer: fine)) {
+  .vim-footer-hint {
+    display: none;
   }
-  [data-placer-phase='place'] .cursor-blink {
-    transform: translateX(-0.42em);
-  }
-  [data-placer-phase='rest'] .cursor-blink {
-    animation: cursorFade 1.6s ease-in-out infinite;
-  }
+}
 
-  /* ============================================================
-     Reduced-motion overrides for slide-in panels
-     ============================================================ */
-
-  @media (prefers-reduced-motion: reduce) {
-    aside[role='dialog'] {
-      animation: panelScrim 200ms ease forwards !important;
-    }
-  }
+/* Blog posts */
+.prose {
+  @apply text-fg leading-[1.8];
+}
+.prose > * + * {
+  margin-top: 1.25em;
+}
+.prose h2,
+.prose h3,
+.prose h4 {
+  @apply text-blue font-bold;
+  margin-top: 2.2em;
+  line-height: 1.3;
+}
+.prose h2 {
+  @apply text-lg;
+}
+.prose h2::before {
+  content: '## ';
+  @apply text-muted;
+}
+.prose h3::before {
+  content: '### ';
+  @apply text-muted;
+}
+.prose .anchor {
+  @apply text-muted ml-2 no-underline opacity-0 transition-opacity;
+}
+.prose :is(h2, h3, h4):hover .anchor {
+  opacity: 1;
+}
+.prose a:not(.anchor) {
+  @apply text-cyan decoration-line hover:decoration-cyan underline decoration-1 underline-offset-4;
+}
+/* [[wikilinks]] between notes: green like the garden, dashed until written */
+.prose a.wikilink {
+  @apply text-green decoration-green/40 hover:decoration-green decoration-dotted;
+}
+.prose .wikilink-missing {
+  @apply text-muted cursor-help underline decoration-dashed decoration-1 underline-offset-4;
+  font-style: normal;
+}
+.prose strong {
+  @apply text-yellow font-bold;
+}
+.prose em {
+  @apply text-purple;
+}
+.prose ul,
+.prose ol {
+  padding-left: 1.4em;
+}
+.prose ul {
+  list-style: none;
+}
+.prose ul > li::before {
+  content: '·';
+  @apply text-green -ml-[1.1em] inline-block w-[1.1em];
+}
+.prose ul.contains-task-list > li::before {
+  content: none;
+}
+.prose ol {
+  list-style: decimal;
+}
+.prose li::marker {
+  @apply text-muted;
+}
+.prose li + li {
+  margin-top: 0.35em;
+}
+.prose blockquote {
+  @apply border-purple text-soft border-l-2 pl-4 italic;
+}
+.prose hr {
+  @apply border-line border-dashed;
+  margin: 2.5em 0;
+}
+.prose :not(pre) > code {
+  @apply bg-surface text-orange px-1.5 py-0.5 text-[0.9em];
+}
+.prose pre {
+  @apply border-line -mx-4 overflow-x-auto border px-4 py-3 text-[13px] leading-relaxed sm:mx-0;
+}
+.prose img {
+  @apply border-line border;
+  max-width: 100%;
+  height: auto;
+}
+.prose table {
+  @apply w-full border-collapse text-sm;
+}
+.prose th,
+.prose td {
+  @apply border-line border px-3 py-1.5 text-left;
+}
+.prose th {
+  @apply text-blue;
+}
+.prose .footnotes {
+  @apply text-soft border-line mt-12 border-t pt-4 text-sm;
+}
+.prose input[type='checkbox'] {
+  @apply accent-green mr-2;
 }

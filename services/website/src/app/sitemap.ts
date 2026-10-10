@@ -1,28 +1,17 @@
 import type { MetadataRoute } from 'next';
+import { SITE } from '~/data/site';
+import { getAllPosts } from '~/lib/posts';
 
-const SITE_URL = 'https://omarov.dev';
-
-export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
-
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await getAllPosts();
   return [
-    {
-      url: `${SITE_URL}/`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 1.0,
-    },
-    {
-      url: `${SITE_URL}/projects`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${SITE_URL}/certificates`,
-      lastModified,
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
+    { url: `${SITE.url}/`, changeFrequency: 'weekly', priority: 1 },
+    { url: `${SITE.url}/blog`, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${SITE.url}/learned`, changeFrequency: 'monthly', priority: 0.4 },
+    ...posts.map((p) => ({
+      url: `${SITE.url}/blog/${p.slug}`,
+      lastModified: p.updated ?? p.date,
+      priority: 0.7,
+    })),
   ];
 }

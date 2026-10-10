@@ -7,14 +7,15 @@ import './src/env.js';
 /** @type {import("next").NextConfig} */
 const config = {
   transpilePackages: ['@workspace/ui'],
-  images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'holopin.me',
-        pathname: '**',
-      },
-    ],
+  async redirects() {
+    return [
+      { source: '/certificates', destination: '/learned', permanent: true },
+      { source: '/projects', destination: '/', permanent: true },
+      { source: '/places', destination: '/', permanent: false },
+      { source: '/feed', destination: '/rss.xml', permanent: true },
+      { source: '/feed.xml', destination: '/rss.xml', permanent: true },
+      { source: '/blog/rss.xml', destination: '/rss.xml', permanent: true },
+    ];
   },
 };
 
