@@ -1,59 +1,79 @@
 ---
-title: I made omanow, a live globe of omarchy machines
+title: i made omanow, a live globe of omarchy machines
 date: 2026-10-17
-description: A pixel globe that shows where omarchy machines are online right now, by city, and the privacy rules that make it safe to switch on.
-tags: [omarchy, open-source, privacy]
+description: a pixel globe that shows where omarchy machines are online right now, by city.
 draft: false
 ---
 
-I've been running [omarchy](https://omarchy.org) for a while, and at some point I wanted to know who else is out there. Not names. Just the shape of it. Is anyone else in my city? Is it mostly Europe? How many of us are online at 3am?
+i've had this idea pretty much since i started using [omarchy](https://omarchy.org) and saw all the hype around it. i thought it would be cool to actually see where all of us are.
 
-So I built [omanow](https://omanow.mark-omarov.workers.dev). It's a pixel globe of the omarchy machines that are online right now, by city.
+so i built [omanow](https://omanow.mark-omarov.workers.dev). it's a pixel globe of the omarchy machines that are online right now, by city. a globe just felt like the most fitting way to show it.
 
-![A pixel-art globe turning slowly, with glowing cities streaming particles into the OMANOW wordmark](https://raw.githubusercontent.com/mark-omarov/omanow/main/docs/media/hero.gif)
+<video src="/blog/omanow/hero.mp4" poster="/blog/omanow/hero.jpg" autoplay muted loop playsinline aria-label="A pixel-art globe turning slowly, with glowing cities streaming particles into the OMANOW wordmark"></video>
 
-The globe in that clip is running on a simulated crowd. The real map is close to empty today, because it launched today. That's the honest state of it.
+ofc the clips are running a simulated crowd. the real map is pretty empty right now, because it launched today. every dot from here on is a real machine, so it's up to us :)
 
-## How it works
+## how it works
 
-omanow is two things: a website and a bar plugin.
+it's two things: a plugin for the omarchy bar and a website.
 
-The plugin puts a small globe in your omarchy bar. It stays hidden like the indicators until you hover the middle of the bar. Click it, pick your city, flip the switch, and your machine counts toward that city for as long as it's online. Switch it off and it's gone.
+the plugin puts a small globe in your bar, hidden like the indicators until you hover. click it, pick your city, flip the switch, and your machine counts toward that city while it's online. switch it off and you're gone.
 
-![The omanow popup in the omarchy bar with a sharing switch and a city picker](https://raw.githubusercontent.com/mark-omarov/omanow/main/docs/media/plugin.png)
+![the omanow popup in the omarchy bar, with a sharing switch, a city picker and an open-the-map button](/blog/omanow/plugin.png)
 
-The website draws the globe. Busier cities glow brighter, and joins stream up into the wordmark. Green pins mark every meetup on [omarchy.org/meetups](https://omarchy.org/meetups), so you can also see where people are getting together in person. If you open the map from the plugin, it uses your current omarchy theme and follows you when you switch themes.
+the website draws the globe. busier cities glow brighter, and every new machine shoots a little burst of particles into the logo. drag to spin it, scroll to zoom until city names show up.
 
-## What it knows about you
+you can also click any city and wave at it 👋 ❤️ ☕ 🔥 🌙. everyone watching sees it pop up from that city, and people there see how many waves they got right in their bar. there's also a history of how many of us were on the map each day.
 
-This was the part I cared about most, because a map of where people are is easy to get wrong.
+<video src="/blog/omanow/waves.mp4" poster="/blog/omanow/waves.jpg" autoplay muted loop playsinline aria-label="Clicking Warsaw on the globe and sending a wave, a heart and a fire, each rising from the city"></video>
 
-- It's off until you switch it on. Opening the website shares nothing.
-- While it's on, the plugin sends two things once an hour: the city you picked and a random id the plugin made up when you installed it.
-- The server keeps a hash of that id, the city and the minute it last heard from you. It deletes all of it an hour after the last check-in, or the moment you switch off.
-- A city only shows up once three machines are in it, so a single person in a small town never appears as a dot.
-- The map updates once a minute and batches every change in that minute together, so nobody can tell exactly when you joined.
-- No names, accounts, IP addresses, coordinates, cookies or analytics.
+only machines running the plugin count. just opening the website doesn't put you on the map.
 
-The locate button finds your nearest city from your weather setting or your timezone, on your machine. Your coordinates never leave it.
+## meetups are on it too
 
-## How it's built
+green pins are every omarchy meetup from [omarchy.org/meetups](https://omarchy.org/meetups), past and upcoming. click one for the date, the place and a link to sign up.
 
-The whole thing runs on Cloudflare's free plan: the website and API in a Worker, and every machine online in one Durable Object with SQLite. The globe is a small renderer with no DOM in it, which means the same code draws the website and runs inside omarchy's own shell. The plugin is a QML widget that sends one request an hour.
+<video src="/blog/omanow/meetups.mp4" poster="/blog/omanow/meetups.jpg" autoplay muted loop playsinline aria-label="The globe gliding to Japan, where green meetup pins pulse over Tokyo"></video>
 
-It's all [open source under MIT](https://github.com/mark-omarov/omanow). The code that decides what gets sent is short enough to read in a few minutes, and I'd rather you read it than take my word for it.
+## in your theme
 
-## Try it
+all the stock omarchy themes are there. open the map from the plugin and it uses yours, and if you switch themes while it's open, the map switches with it.
+
+<video src="/blog/omanow/themes.mp4" poster="/blog/omanow/themes.jpg" autoplay muted loop playsinline aria-label="The globe blending from one omarchy theme to the next"></video>
+
+## what it knows about you
+
+privacy matters, nobody should be identifiable on this map:
+
+- while sharing is on, the plugin sends your city and a random install id once an hour. no names, accounts, ip addresses, coordinates, cookies or analytics.
+- cities with fewer than three machines get a dim dot with no count, and only change on the hour, so nobody can tell when you're online.
+- switch it off and you're gone right away. otherwise everything about your machine is deleted a day after its last check-in.
+
+the locate button guesses your city from your weather setting or timezone, on your machine. coordinates never leave it.
+
+## how i built it
+
+i vibed this one. the code is pretty much all generated, the decisions are mine, and honestly i think it turned out pretty good.
+
+omarchy installs plugins by cloning a git repo, so the plugin lives in its own repo, [omanow-plugin](https://github.com/mark-omarov/omanow-plugin), and everything in there is generated. the real work happens in [the monorepo](https://github.com/mark-omarov/omanow). when a release merges there, ci builds the plugin and pushes it to the plugin repo with a tag, so `omarchy plugin update` just picks it up.
+
+ok, for the nerds like me :) it's all on cloudflare workers. the whole map is literally one durable object with sqlite, that's it. your plugin pings it once an hour, and once a minute it batches whatever changed and pushes it to everyone watching over websockets (hibernating ones, so idle tabs cost pretty much nothing). the globe itself is a tiny pixel renderer in plain js, no libraries, no dom, it just draws into a pixel buffer and scales it up. the plugin is a qml widget that shares the city list and theme code with the website, which is why the map looks exactly like your omarchy theme.
+
+it's all [open source, mit](https://github.com/mark-omarov/omanow). the code that sends stuff is short, so feel free to check it yourself.
+
+## try it
 
 ```sh
 omarchy plugin add https://github.com/mark-omarov/omanow-plugin --enable
 omarchy bar move io.github.mark-omarov.omanow --after omarchy.indicators
 ```
 
-It's also on the [omarchy plugin marketplace](https://plugins.omarchy.org/plugin.html?id=io.github.mark-omarov.omanow). If your city is missing from the map, it's because nobody there has switched it on yet.
+it's also on the [omarchy plugin marketplace](https://plugins.omarchy.org/plugin.html?id=io.github.mark-omarov.omanow). if your city isn't on the map, nobody there has switched it on yet.
 
-## What's next
+<video src="/blog/omanow/promo.mp4" poster="/blog/omanow/promo.jpg" controls muted playsinline preload="none" aria-label="A 22-second tour of omanow"></video>
 
-I have a list of ideas: little chat rooms on the globe, visiting other cities, maybe putting AIs on the map. I'm not building any of them until people are actually using it, because the first few replies will tell me which one matters.
+## what's next
 
-If you try it, I'd love to hear what you think. Issues are open on [GitHub](https://github.com/mark-omarov/omanow/issues), and if you find it useful, a heart on the plugin page helps other omarchy users find it.
+i really hope the community picks it up, and if people actually run it, there's more coming. i have a few bigger ideas too, but for now they're just ideas.
+
+if you try it, tell me what you think, issues are open on [github](https://github.com/mark-omarov/omanow/issues). and if you like it, a star on [github](https://github.com/mark-omarov/omanow) or a heart on the [plugin page](https://plugins.omarchy.org/plugin.html?id=io.github.mark-omarov.omanow) helps other omarchy people find it.
