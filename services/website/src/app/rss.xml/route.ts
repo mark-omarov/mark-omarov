@@ -27,7 +27,7 @@ export async function GET() {
         meta.description
           ? `\n      <description>${escape(meta.description)}</description>`
           : ''
-      }${meta.tags.map((t) => `\n      <category>${escape(t)}</category>`).join('')}
+      }
       <content:encoded>${cdata(post?.html ?? '')}</content:encoded>
     </item>`;
     })

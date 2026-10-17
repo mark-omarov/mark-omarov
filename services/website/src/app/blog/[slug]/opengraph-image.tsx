@@ -22,7 +22,6 @@ export default async function PostImage({
   const index = new Map(notes.map((n, i) => [n.slug, i]));
   return postImage({
     title: post?.title ?? 'omarov.dev',
-    stage: post?.stage ?? 'seedling',
     notes,
     links: links.map((l) => [index.get(l.from)!, index.get(l.to)!]),
     index: index.get(slug) ?? -1,

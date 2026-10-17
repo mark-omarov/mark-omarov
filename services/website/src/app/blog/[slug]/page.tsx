@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import { pageMeta } from '~/lib/meta';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { StageIcon, STAGE_LABEL } from '~/components/stage-icon';
 import { SITE } from '~/data/site';
 import { LocalGraph } from '~/components/local-graph';
 import { formatDate, getAllPosts, getLocalGraph, getPost } from '~/lib/posts';
+import { BackToTop } from '~/components/back-to-top';
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -29,7 +29,6 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       publishedTime: post.date.toISOString(),
       modifiedTime: post.updated?.toISOString(),
       authors: [SITE.name],
-      tags: post.tags,
     },
   });
 }
@@ -47,6 +46,7 @@ export default async function PostPage({ params }: Params) {
 
   return (
     <article className="page mt-10">
+      <BackToTop />
       <Link href="/blog" className="text-muted hover:text-fg text-sm">
         ← all posts
       </Link>
@@ -55,18 +55,11 @@ export default async function PostPage({ params }: Params) {
           {post.title}
         </h1>
         <p className="text-muted mt-3 text-sm">
-          <span className="text-green">
-            <StageIcon stage={post.stage} size={14} /> {STAGE_LABEL[post.stage]}
-          </span>{' '}
-          ·{' '}
           <time dateTime={post.date.toISOString()}>
             {formatDate(post.date)}
           </time>
           {post.updated && <> · updated {formatDate(post.updated)}</>} ·{' '}
           {post.readingMinutes} min read
-          {post.tags.length > 0 && (
-            <> · {post.tags.map((t) => `#${t}`).join(' ')}</>
-          )}
           {post.draft && <span className="text-orange"> · draft</span>}
         </p>
       </header>
@@ -96,7 +89,7 @@ export default async function PostPage({ params }: Params) {
             {post.backlinks.map((b) => (
               <li key={b.slug}>
                 <Link href={`/blog/${b.slug}`} className="hover:text-green">
-                  <StageIcon stage={b.stage} size={14} /> {b.title}
+                  {b.title}
                 </Link>
                 {b.description && (
                   <p className="text-muted text-sm">{b.description}</p>
@@ -109,12 +102,12 @@ export default async function PostPage({ params }: Params) {
 
       <footer className="border-line mt-16 border-t border-dashed pt-6 text-sm">
         <p className="text-soft">
-          Thoughts? Corrections?{' '}
+          thoughts? corrections?{' '}
           <a
             href={`mailto:${SITE.email}?subject=${encodeURIComponent(`Re: ${post.title}`)}`}
             className="text-cyan link"
           >
-            Reply by email
+            reply by email
           </a>
           .
         </p>

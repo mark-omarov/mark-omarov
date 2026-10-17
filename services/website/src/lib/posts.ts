@@ -29,18 +29,14 @@ const frontmatterSchema = z.object({
   date: z.coerce.date(),
   description: z.string().optional(),
   updated: z.coerce.date().optional(),
-  tags: z.array(z.string()).default([]),
   draft: z.boolean().default(false),
-  // how grown a note is: seedling (rough), budding (getting there), evergreen (done-ish)
-  stage: z.enum(['seedling', 'budding', 'evergreen']).default('seedling'),
   // other names [[wikilinks]] can use for this post
   aliases: z.array(z.string()).default([]),
 });
 
-export type Stage = z.infer<typeof frontmatterSchema>['stage'];
-
 export type PostMeta = z.infer<typeof frontmatterSchema> & {
   slug: string;
+  words: number;
   readingMinutes: number;
 };
 
@@ -79,6 +75,7 @@ async function readPostFile(file: string) {
   const meta: PostMeta = {
     ...parsed.data,
     slug: file.replace(/\.mdx?$/, ''),
+    words,
     readingMinutes: Math.max(1, Math.round(words / 220)),
   };
   return { meta, content };
@@ -143,12 +140,14 @@ export const getPost = cache(async (slug: string): Promise<Post | null> => {
 });
 
 export function formatDate(date: Date) {
-  return date.toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-    timeZone: 'UTC',
-  });
+  return date
+    .toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric',
+      timeZone: 'UTC',
+    })
+    .toLowerCase();
 }
 
 /**
@@ -183,7 +182,6 @@ export const getLocalGraph = cache(async (slug: string) => {
   const nodes = order.map((s) => ({
     slug: s,
     title: bySlug.get(s)!.title,
-    stage: bySlug.get(s)!.stage,
     ring: ringOf(s),
   }));
   const seen = new Set<string>();

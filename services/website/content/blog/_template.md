@@ -4,7 +4,6 @@
 title: Post title goes here
 date: 2026-01-31
 description: One sentence for the blog index, RSS readers and link previews.
-tags: [homelab, typescript]
 # Drafts are visible in `pnpm dev` only. Flip to false (or delete the line) to publish.
 draft: true
 # updated: 2026-02-14

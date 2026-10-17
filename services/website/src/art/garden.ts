@@ -1,6 +1,6 @@
 // The blog as a garden in Tokyo, at whatever time it is where you are: dawn,
-// day, dusk or night. Every note is a plant, grown by the note's stage
-// (seedling, budding, evergreen). Links aren't drawn: fireflies (butterflies
+// day, dusk or night. Every note is a plant, and the longer the post the
+// bigger it grows: a sprout, a bud, then a full bloom. Links aren't drawn: fireflies (butterflies
 // by day) fly from one linked note to the other, a few at a time, working
 // through every link. Hover a plant and its own links light up as streams
 // of light to its neighbours, like Obsidian's local graph. When the bed gets
@@ -15,8 +15,7 @@ import { layer } from './scene';
 import { skyline } from './things/city';
 import { drawMotorcycle } from './things/motorcycle';
 
-export type Stage = 'seedling' | 'budding' | 'evergreen';
-export type GardenNote = { stage: Stage; seed: number };
+export type GardenNote = { words: number; seed: number };
 
 export const GARDEN_H = 132;
 const GROUND = 110; // where the plants are rooted
@@ -237,11 +236,20 @@ type Spot = {
   core: RGB;
 };
 
+// 0 for a post of 200 words or fewer, 1 at 3000 and up, on a log scale
+function growthOf(note: GardenNote) {
+  const g = Math.log(note.words / 200) / Math.log(3000 / 200);
+  return Math.min(1, Math.max(0, g));
+}
+
+function formOf(note: GardenNote) {
+  const g = growthOf(note);
+  return g < 1 / 3 ? 'sprout' : g < 2 / 3 ? 'bud' : 'bloom';
+}
+
 function plantHeight(note: GardenNote) {
   const r = hash2(note.seed, 1, 5);
-  if (note.stage === 'seedling') return 12 + Math.round(r * 4);
-  if (note.stage === 'budding') return 26 + Math.round(r * 8);
-  return 40 + Math.round(r * 14);
+  return 12 + Math.round(growthOf(note) * 38 + r * 4);
 }
 
 export function createGarden(
@@ -296,18 +304,19 @@ export function createGarden(
 
   /**
    * A note's plant, rooted at (s.base, s.root). Its glow is drawn per frame.
-   * In a crowded bed the evergreens leave out their side shoots.
+   * In a crowded bed the blooms leave out their side shoots.
    */
   function drawPlant(f: Frame, note: GardenNote, s: Spot, shoots: boolean) {
     const top = s.root - s.height;
+    const form = formOf(note);
     const stemX = stemAt(note, s.base, s.root, s.height);
     for (let y = s.root; y > top; y--) {
       const sx = stemX(y);
       f.set(sx, y, stemC);
-      if (note.stage === 'evergreen' && y > top + 6) f.set(sx + 1, y, leafC[0]);
+      if (form === 'bloom' && y > top + 6) f.set(sx + 1, y, leafC[0]);
     }
     const tx = stemX(top + 1);
-    if (note.stage === 'seedling') {
+    if (form === 'sprout') {
       leaf(f, tx, top + 4, 4, -1);
       leaf(f, tx, top + 5, 4, 1);
       f.set(tx, top, s.color);
@@ -315,16 +324,16 @@ export function createGarden(
       return;
     }
     // leaves up the stem, alternating sides, longer near the bottom
-    const count = note.stage === 'budding' ? 4 : 7;
+    const count = form === 'bud' ? 4 : 7;
     for (let i = 0; i < count; i++) {
       const y = s.root - 3 - Math.round((i / count) * (s.height - 10));
       const len = Math.max(
         3,
-        Math.round((note.stage === 'evergreen' ? 9 : 6) * (1 - i / (count + 2)))
+        Math.round((form === 'bloom' ? 9 : 6) * (1 - i / (count + 2)))
       );
       leaf(f, stemX(y), y, len, i % 2 ? 1 : -1);
     }
-    if (note.stage === 'budding') {
+    if (form === 'bud') {
       // a closed bud with its sepals, colour showing at the tip
       f.rect(tx - 1, top, 3, 4, s.color);
       f.set(tx, top - 1, s.color);
@@ -334,7 +343,7 @@ export function createGarden(
       f.hline(tx - 1, tx + 1, top + 4, leafC[1]);
       return;
     }
-    // evergreen: a full bloom, and a couple more on side shoots
+    // a full bloom, and a couple more on side shoots
     bloom(f, tx, top, 4, s.color, s.core);
     if (shoots)
       for (const side of [-1, 1] as const) {
@@ -407,7 +416,7 @@ export function createGarden(
     // the flower itself, where its glow, links and label belong: the stem
     // leans, and a bud's heart is a pixel below its tip
     const x = stemAt(note, base, root, height)(top + 1);
-    const y = note.stage === 'budding' ? top + 1 : top;
+    const y = formOf(note) === 'bud' ? top + 1 : top;
     spots[n] = { x, y, base, root, row, height, color, core };
   });
   // side shoots only where neighbours in a row leave room for them
@@ -575,7 +584,7 @@ export function createGarden(
     // clumps, irises, ferns and pampas grass
     const flowerC = (c: RGB) => lerpRGB(s1, c, T.flower);
     for (let x = 4; x < w - 4; x += 8) {
-      // clear of the notes, so a lone seedling isn't lost among them
+      // clear of the notes, so a lone sprout isn't lost among them
       if (
         spots.some((s) => Math.abs(s.base - x) < 10) ||
         Math.abs(x - lanternAt.x) < 14
@@ -1104,8 +1113,7 @@ export function createGarden(
         const breathe = Math.sin(t / 1300 + i * 1.7) * 0.06;
         const hot = i === hovered;
         const friend = lit.has(i) && !hot;
-        const stage = notes[i]!.stage;
-        const r = stage === 'evergreen' ? 13 : stage === 'budding' ? 7 : 4;
+        const r = 4 + Math.round(growthOf(notes[i]!) * 9);
         const quiet = hovered >= 0 && !hot && !friend;
         const strength =
           (hot ? 0.6 : friend ? 0.5 : quiet ? 0.12 : 0.34) *

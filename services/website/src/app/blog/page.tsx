@@ -21,13 +21,13 @@ export default async function BlogPage() {
   return (
     <>
       <GardenView
-        notes={notes.map(({ slug, title, stage }) => ({ slug, title, stage }))}
+        notes={notes.map(({ slug, title, words }) => ({ slug, title, words }))}
         links={edges}
       />
       <div className="page mt-10">
         <h1 className="font-pixel text-4xl leading-none">blog</h1>
         <p className="text-soft mt-4">
-          Notes on software, homelabs and whatever else I&apos;m into.{' '}
+          notes on software, homelabs and whatever else i&apos;m into.{' '}
           <a href="/rss.xml" className="text-cyan link">
             rss
           </a>

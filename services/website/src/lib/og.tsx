@@ -2,7 +2,7 @@ import 'server-only';
 
 import { ImageResponse } from 'next/og';
 import { Frame } from '~/art/frame';
-import { createGarden, GARDEN_H, noteSeed, type Stage } from '~/art/garden';
+import { createGarden, GARDEN_H, noteSeed } from '~/art/garden';
 import { pngDataURL } from '~/art/png';
 import { SCENE_H } from '~/art/scene';
 import { tokyo } from '~/art/scenes/tokyo';
@@ -21,14 +21,14 @@ function tokyoStill() {
 
 /** The blog garden with one note marked, at 3x. */
 function gardenStill(
-  notes: { slug: string; stage: Stage }[],
+  notes: { slug: string; words: number }[],
   links: [number, number][],
   highlight: number
 ) {
   const f = new Frame(W, GARDEN_H);
   createGarden(
     W,
-    notes.map((n) => ({ stage: n.stage, seed: noteSeed(n.slug) })),
+    notes.map((n) => ({ words: n.words, seed: noteSeed(n.slug) })),
     links
   ).render(f, 5_000, highlight);
   return pngDataURL(f, SCALE);
@@ -88,15 +88,14 @@ export function siteImage() {
 
 export function postImage(opts: {
   title: string;
-  stage: Stage;
-  notes: { slug: string; stage: Stage }[];
+  notes: { slug: string; words: number }[];
   links: [number, number][];
   index: number;
 }) {
   return card(
     gardenStill(opts.notes, opts.links, opts.index),
     GARDEN_H * SCALE,
-    `omarov.dev/blog · ${opts.stage}`,
+    'omarov.dev/blog',
     opts.title
   );
 }

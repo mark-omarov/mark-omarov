@@ -3,14 +3,13 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Frame } from '~/art/frame';
-import { noteSeed, type Stage } from '~/art/garden';
+import { noteSeed } from '~/art/garden';
 import { createLocalGraph, LOCAL_H } from '~/art/local-graph';
 import { bubbleSide } from './bubble';
 
 export type LocalGraphNode = {
   slug: string;
   title: string;
-  stage: Stage;
   ring: 0 | 1 | 2;
 };
 

@@ -8,11 +8,10 @@ import {
   GARDEN_H,
   noteSeed,
   periodOf,
-  type Stage,
 } from '~/art/garden';
 import { bubbleSide } from './bubble';
 
-export type GardenNoteView = { slug: string; title: string; stage: Stage };
+export type GardenNoteView = { slug: string; title: string; words: number };
 
 /** The blog's notes as a little pixel garden: hover a plant for its title, click to read. */
 export function GardenView({
@@ -63,7 +62,7 @@ export function GardenView({
       size.w && hour !== null
         ? createGarden(
             size.w,
-            notes.map((n) => ({ stage: n.stage, seed: noteSeed(n.slug) })),
+            notes.map((n) => ({ words: n.words, seed: noteSeed(n.slug) })),
             links,
             hour
           )

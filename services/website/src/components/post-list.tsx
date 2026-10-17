@@ -1,12 +1,11 @@
 import Link from 'next/link';
-import { StageIcon } from '~/components/stage-icon';
 import { formatDate, type PostMeta } from '~/lib/posts';
 
 export function PostList({ posts }: { posts: PostMeta[] }) {
   if (posts.length === 0) {
     return (
       <p className="text-soft">
-        Nothing here yet. It&apos;s coming, I promise. Grab the{' '}
+        nothing here yet. it&apos;s coming, i promise. grab the{' '}
         <a href="/rss.xml" className="text-cyan link">
           rss feed
         </a>{' '}
@@ -26,7 +25,7 @@ export function PostList({ posts }: { posts: PostMeta[] }) {
           </time>
           <div>
             <Link href={`/blog/${post.slug}`} className="hover:text-blue">
-              <StageIcon stage={post.stage} size={14} /> {post.title}
+              {post.title}
               {post.draft && (
                 <span className="text-orange ml-2 text-xs">[draft]</span>
               )}
