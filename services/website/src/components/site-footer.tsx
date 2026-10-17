@@ -5,7 +5,7 @@ export function SiteFooter() {
   return (
     <footer className="page text-muted mt-24 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 pb-10 pt-6 text-xs">
       <p>
-        © {new Date().getFullYear()} Mark Omarov ·{' '}
+        © {new Date().getFullYear()} mark omarov ·{' '}
         <a href="https://github.com/mark-omarov/mark-omarov" className="link">
           source
         </a>

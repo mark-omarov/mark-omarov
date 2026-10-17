@@ -44,8 +44,8 @@ export default async function HomePage() {
             open source
           </h2>
           <p className="text-muted mt-4 text-sm">
-            Most of my work lives inside the companies I&apos;ve worked for, so
-            you won&apos;t find it here. Some of it might end up in the blog.
+            most of my work lives inside the companies i&apos;ve worked for, so
+            you won&apos;t find it here. some of it might end up in the blog.
           </p>
           <ul className="mt-5 space-y-5">
             {THINGS.map((t) => (
@@ -68,7 +68,7 @@ export default async function HomePage() {
             say hi
           </h2>
           <p className="text-soft mt-4">
-            Email is the easiest way to reach me.
+            email is the easiest way to reach me.
           </p>
           <ul className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
             {LINKS.map((l) => (

@@ -36,8 +36,8 @@ export default function LearnedPage() {
     <div className="page mt-10">
       <h1 className="font-pixel text-4xl leading-none">learned</h1>
       <p className="text-soft mt-4">
-        Courses and certificates I&apos;ve picked up over the years, mostly
-        self-paced online stuff. Kept here as a log.
+        courses and certificates i&apos;ve picked up over the years, mostly
+        self-paced online stuff. kept here as a log.
       </p>
 
       <section aria-labelledby="badges" className="mt-10">

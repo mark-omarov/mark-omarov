@@ -121,8 +121,8 @@ export function HolopinBoard() {
             </>
           ) : (
             <p className="text-muted text-sm">
-              Holopin didn&apos;t answer.{' '}
-              <span className="text-cyan link">See the board there</span>.
+              holopin didn&apos;t answer.{' '}
+              <span className="text-cyan link">see the board there</span>.
             </p>
           )}
         </div>

@@ -27,7 +27,7 @@ export default function NotFound() {
       />
       <h1 className="font-pixel mt-10 text-5xl leading-none">404</h1>
       <p className="text-soft mt-4">
-        Nothing out here but snow. This page doesn&apos;t exist.
+        nothing out here but snow. this page doesn&apos;t exist.
       </p>
       <p className="mt-8">
         <Link href="/" className="text-cyan link">

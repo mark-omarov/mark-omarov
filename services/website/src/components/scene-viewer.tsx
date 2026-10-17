@@ -646,7 +646,7 @@ export function SceneViewer() {
           aria-live={announce ? 'polite' : 'off'}
           className="min-h-[1.25rem] min-w-0 flex-1 truncate"
         >
-          {entry ? label(entry) : ' '}
+          {entry ? label(entry).toLowerCase() : ' '}
         </p>
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           {placeEggs.length > 0 && (
